@@ -1,0 +1,18 @@
+.footer {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  height: 60px;
+  background: $verde-claro;
+  border-radius: 15px 15px 0 0;
+  position: fixed;
+  bottom: 0;
+  .footer-div_icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    color: white;
+    flex: 1;
+  }
+}
