@@ -1,0 +1,49 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  height: 100%;
+  font-family: "Poppins", "sans-serif";
+  .main-article {
+    font-size: 0.8em;
+    margin: 15px 0px;
+  }
+  .main-section {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
+    overflow: auto; /* Habilita la barra de desplazamiento */
+    scrollbar-width: none; /* Oculta la barra de desplazamiento en navegadores compatibles */
+    -ms-overflow-style: none; /* Oculta la barra de desplazamiento en Internet Explorer y Microsoft Edge */
+
+    &::-webkit-scrollbar {
+      display: none; /* Oculta la barra de desplazamiento en navegadores basados en WebKit, como Chrome y Safari */
+    }
+    .section-div_categories {
+      width: 100%;
+      max-width: 80px;
+      height: 100px;
+      margin: 0px 15px;
+      .div-section_photo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 65px;
+        overflow: hidden; /* Evita el desbordamiento */
+        background: $celeste-pastel;
+        border-radius: 10px;
+        img {
+          max-width: 100%; /* Ajusta el ancho máximo de la imagen al 100% del contenedor */
+          max-height: 100%; /* Ajusta la altura máxima de la imagen al 100% del contenedor */
+          object-fit: contain; /* Ajusta la imagen al contenedor manteniendo su relación de aspecto */
+        }
+      }
+      .div-article_text {
+        text-align: center;
+        font-size: 0.9em;
+      }
+    }
+  }
+}
