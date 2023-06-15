@@ -239,10 +239,14 @@ body {
   align-items: center;
   padding: 20px 0px;
 }
+.main .main-section_2 .section-article h2 {
+  font-size: 1.2em;
+}
 .main .main-section_2 .section-article .article-span {
   display: flex;
   justify-content: center;
   align-items: center;
+  min-width: 92px;
 }
 .main .main-section_2 .section-article .article-span i {
   font-size: 1.4em;
@@ -251,10 +255,19 @@ body {
 .main .main-section_2 .section-div_conteinerCards {
   display: flex;
   justify-content: space-between;
-  overflow: scroll;
   padding: 10px 0px;
+  overflow: auto; /* Habilita la barra de desplazamiento */
+  scrollbar-width: none; /* Oculta la barra de desplazamiento en navegadores compatibles */
+  -ms-overflow-style: none; /* Oculta la barra de desplazamiento en Internet Explorer y Microsoft Edge */
+}
+.main .main-section_2 .section-div_conteinerCards::-webkit-scrollbar {
+  display: none; /* Oculta la barra de desplazamiento en navegadores basados en WebKit, como Chrome y Safari */
 }
 .main .main-section_2 .section-div_conteinerCards .section-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   width: 100%;
   height: 100%;
   min-width: 200px;
@@ -264,6 +277,17 @@ body {
   padding: 10px;
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.3);
   margin: 0px 10px;
+  position: relative;
+}
+.main .main-section_2 .section-div_conteinerCards .section-card .section-div_like {
+  position: absolute;
+  text-align: end;
+  padding: 5px 15px;
+  font-size: 2em;
+  width: 100%;
+}
+.main .main-section_2 .section-div_conteinerCards .section-card .section-div_like:active {
+  color: red;
 }
 .main .main-section_2 .section-div_conteinerCards .section-card .card-containerImg img {
   max-width: 100%; /* Ajusta el ancho máximo de la imagen al 100% del contenedor */
@@ -285,7 +309,12 @@ body {
   font-size: 1.1em;
 }
 .main .main-section_2 .section-div_conteinerCards .section-card .card-containerText p:nth-child(3) {
-  font-size: 0.8em;
+  font-size: 1em;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  letter-spacing: 1px;
+  font-weight: lighter;
+  text-decoration: line-through;
+  color: #b6b0b8;
 }
 .main .main-section_2 .section-div_conteinerCards .section-card .card-containerButtons {
   display: flex;

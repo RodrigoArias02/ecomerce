@@ -42,7 +42,7 @@
             <p>Descuento</p>
             <p>25%</p>
             <p>Obtener descuento en nuestros productos</p>
-            <button>Ver detales</button>
+            <button>Ver detalles</button>
           </section>
           <section class="div-section_2">
             <img
@@ -111,13 +111,16 @@
         </article>
         <div class="section-div_conteinerCards">
           <section class="section-card">
+            <div class="section-div_like">
+              <i class="bx bxs-heart"></i>
+            </div>
             <div class="card-containerImg">
               <img src="img/chaqueta.webp" width="100%" alt="" />
             </div>
             <article class="card-containerText">
               <p>Chaqueta</p>
-              <p>300$</p>
-              <p>350%</p>
+              <p>$300</p>
+              <p>$350</p>
             </article>
             <section class="card-containerButtons">
               <button>Comprar</button>
@@ -126,13 +129,64 @@
           </section>
 
           <section class="section-card">
+            <div class="section-div_like">
+              <i class="bx bxs-heart"></i>
+            </div>
             <div class="card-containerImg">
               <img src="img/chaqueta.webp" width="100%" alt="" />
             </div>
             <article class="card-containerText">
               <p>Chaqueta</p>
-              <p>300$</p>
-              <p>350%</p>
+              <p>$300</p>
+              <p>$350</p>
+            </article>
+            <section class="card-containerButtons">
+              <button>Comprar</button>
+              <button><i class="bx bx-plus"></i></button>
+            </section>
+          </section>
+        </div>
+      </section>
+
+      <hr class="main-hr" />
+      <section class="main-section_2">
+        <article class="section-article">
+          <h2>Recomendados para ti</h2>
+          <span class="article-span">
+            <p>Ver mas</p>
+            <i class="bx bx-chevron-right"></i>
+          </span>
+        </article>
+        <div class="section-div_conteinerCards">
+          <section class="section-card">
+            <div class="section-div_like">
+              <i class="bx bxs-heart"></i>
+            </div>
+            <div class="card-containerImg">
+              <img src="img/chaqueta.webp" width="100%" alt="" />
+            </div>
+            <article class="card-containerText">
+              <p>Chaqueta</p>
+              <p>$300</p>
+              <p>$350</p>
+            </article>
+            <section class="card-containerButtons">
+              <button>Comprar</button>
+              <button><i class="bx bx-plus"></i></button>
+            </section>
+          </section>
+
+          <section class="section-card">
+            <div class="section-div_like">
+              <i class="bx bxs-heart"></i>
+            </div>
+            <div class="card-containerImg">
+              <img src="img/chaqueta.webp" width="100%" alt="" />
+            </div>
+            <article class="card-containerText">
+              <p>Chaqueta</p>
+              <p>$300</p>
+              <p>$350</p>
             </article>
             <section class="card-containerButtons">
               <button>Comprar</button>
@@ -144,10 +198,12 @@
     </main>
 
     <footer class="footer">
-      <div class="footer-div_icons"><i class="bx bxs-home"></i></div>
-      <div class="footer-div_icons"><i class="bx bxs-heart"></i></div>
-      <div class="footer-div_icons"><i class="bx bxs-cart"></i></div>
-      <div class="footer-div_icons"><i class="bx bxs-user"></i></div>
+      <div class="footer-div_icons" id="home"><i class="bx bxs-home"></i></div>
+      <div class="footer-div_icons" id="favorite">
+        <i class="bx bxs-heart"></i>
+      </div>
+      <div class="footer-div_icons" id="cart"><i class="bx bxs-cart"></i></div>
+      <div class="footer-div_icons" id="user"><i class="bx bxs-user"></i></div>
     </footer>
   </body>
 </html>
