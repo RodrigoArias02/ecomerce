@@ -135,6 +135,10 @@
             padding: 3px 0px;
             &:nth-child(1) {
               font-size: 0.9em;
+              display: -webkit-box;
+              -webkit-line-clamp: 2;
+              -webkit-box-orient: vertical;
+              overflow: hidden;
             }
             &:nth-child(2) {
               font-size: 1.1em;

@@ -5,13 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/styles.css" />
-
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/boxicons@2.0.7/css/boxicons.min.css"
     />
-
-    <title>Document</title>
+    <title>Home</title>
   </head>
   <body>
     <header class="header">
@@ -166,7 +164,7 @@
               <img src="img/chaqueta.webp" width="100%" alt="" />
             </div>
             <article class="card-containerText">
-              <p>Chaqueta</p>
+              <p>Campera Mujer de algodon con piel en el interior</p>
               <p>$300</p>
               <p>$350</p>
             </article>
@@ -196,7 +194,55 @@
         </div>
       </section>
     </main>
-
+    <div class="div_modal" id="modal">
+      <section class="section_modal_header">
+        <article>
+          <i class="bx bx-x" id="close"></i>
+          <p>Favoritos</p>
+        </article>
+        <article>
+          <i class="bx bx-search-alt-2"></i>
+        </article>
+      </section>
+      <article class="article_card_fav">
+        <section class="article_img">
+          <img src="img/chaqueta.webp" alt="" />
+        </section>
+        <section class="article_text">
+          <p>Campera Mujer de algodon con piel en el interior</p>
+          <p class="through">$7680</p>
+          <span class="ofert">
+            <p>$8000</p>
+            <p>4% OFF</p>
+          </span>
+          <span class="send">
+            <p>Envio gratis</p>
+            <i class="bx bxs-plane-take-off"></i>
+            <p>FULL</p>
+          </span>
+          <p class="delete">Eliminar</p>
+        </section>
+      </article>
+      <article class="article_card_fav">
+        <section class="article_img">
+          <img src="img/ropaInterior.png" alt="" />
+        </section>
+        <section class="article_text">
+          <p>Campera Mujer de algodon con piel en el interior</p>
+          <p class="through"></p>
+          <span class="ofert">
+            <p>$8000</p>
+            <p></p>
+          </span>
+          <span class="send">
+            <p></p>
+            <!-- <i class="bx bxs-plane-take-off"></i> -->
+            <p></p>
+          </span>
+          <p class="delete">Eliminar</p>
+        </section>
+      </article>
+    </div>
     <footer class="footer">
       <div class="footer-div_icons" id="home"><i class="bx bxs-home"></i></div>
       <div class="footer-div_icons" id="favorite">
@@ -206,4 +252,5 @@
       <div class="footer-div_icons" id="user"><i class="bx bxs-user"></i></div>
     </footer>
   </body>
+  <script src="js/footer.js"></script>
 </html>
