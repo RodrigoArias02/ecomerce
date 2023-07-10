@@ -635,5 +635,19 @@
   color: white;
   flex: 1;
 }
+.footer .footer-div_icons span {
+  display: none;
+  width: min-content;
+  min-width: 18px;
+  padding: 0px 3px;
+  height: min-content;
+  position: absolute;
+  background: red;
+  border-radius: 50%;
+  font-size: 0.5em;
+  text-align: center;
+  margin-left: 23px;
+  margin-bottom: 16px;
+}
 
 /*# sourceMappingURL=styles.css.map */

@@ -1,6 +1,9 @@
 "use strict";
 
-let conteinerBestSellers = document.getElementById("conteiner-best_sellers");
+let containerBestSellers = document.querySelectorAll(
+  ".section-div_conteinerCards"
+);
+
 let HTMLCards = "";
 let bestSellers = [
   {
@@ -61,25 +64,5 @@ bestSellers.forEach((elemento) => {
     </section>
     `;
 });
-conteinerBestSellers.innerHTML = HTMLCards;
-let myForms = document.querySelectorAll("form");
-let cart = [];
-let compra, elements;
-
-myForms.forEach((form) => {
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    let formulario = e.target;
-    let idobjet = 0;
-    idobjet = formulario.children[2].value;
-    if (idobjet != undefined) {
-      compra = search(idobjet);
-      cart.push(compra);
-      console.log(cart);
-      let transformJson = JSON.stringify(cart);
-      localStorage.setItem("Carrito", transformJson);
-    }
-  });
-});
-
-const search = (id) => bestSellers.find((objeto) => objeto.id === parseInt(id));
+containerBestSellers[0].innerHTML = HTMLCards;
+containerBestSellers[1].innerHTML = HTMLCards;
