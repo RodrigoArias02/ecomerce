@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "nombre": "chaqueta marron reforzada con peluche en el interior",
+    "precio": 5000,
+    "URLImg": "chaqueta.webp",
+    "oferta": {
+      "estado": true,
+      "numero": 5
+    }
+  },
+  {
+    "id": 2,
+    "nombre": "Zapatos de salir rojos",
+    "precio": 800,
+    "URLImg": "zapatos.webp",
+    "oferta": {
+      "estado": true,
+      "numero": 5
+    }
+  },
+  {
+    "id": 3,
+    "nombre": "Remera blanca de algodon",
+    "precio": 1500,
+    "URLImg": "remera.webp",
+    "oferta": {
+      "estado": true,
+      "numero": 5
+    }
+  },
+  {
+    "id": 4,
+    "nombre": "Pantalon Jean azul reforzado",
+    "precio": 5500,
+    "URLImg": "pantalon.jpg",
+    "oferta": {
+      "estado": true,
+      "numero": 5
+    }
+  }
+]

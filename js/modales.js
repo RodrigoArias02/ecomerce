@@ -127,33 +127,3 @@ export const modalFavorite = `
     <p class="delete">Eliminar</p>
   </section>
 </article>`;
-
-export const modalCart = `
-<article class="card-cart">
-<section class="cart-top">
-  <p>Comprador</p>
-</section>
-<section class="cart-mid">
-  <div class="conteiner-img-cart">
-    <img src="img/chaqueta.webp" alt="" />
-  </div>
-  <div class="conteiner-text-cart">
-    <p>Campera frizada buzo con capucha</p>
-    <p>color: gris, talle: M</p>
-    <p>Eliminar</p>
-    <section class="cart-text-price">
-      <select name="" id="">
-        <option value="">1 u.</option>
-      </select>
-      <p>$5000</p>
-    </section>
-  </div>
-</section>
-<section class="card-bot">
-  <p>Envío</p>
-  <p>Gratis</p>
-</section>
-<section class="cart-line">
-  <div class="line"></div>
-</section>
-</article>`;

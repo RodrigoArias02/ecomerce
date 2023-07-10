@@ -278,6 +278,7 @@
   height: 100%;
   min-width: 200px;
   max-width: 350px;
+  max-height: 356px;
   background: white;
   border-radius: 15px;
   padding: 10px;
@@ -294,6 +295,13 @@
 }
 .main .main-section_2 .section-div_conteinerCards .section-card .section-div_like:active {
   color: red;
+}
+.main .main-section_2 .section-div_conteinerCards .section-card .card-containerImg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 187px;
 }
 .main .main-section_2 .section-div_conteinerCards .section-card .card-containerImg img {
   max-width: 100%; /* Ajusta el ancho máximo de la imagen al 100% del contenedor */
@@ -328,11 +336,14 @@
   color: #b6b0b8;
 }
 .main .main-section_2 .section-div_conteinerCards .section-card .card-containerButtons {
+  width: 100%;
+}
+.main .main-section_2 .section-div_conteinerCards .section-card .card-containerButtons form {
   display: flex;
   width: 100%;
   justify-content: space-between;
 }
-.main .main-section_2 .section-div_conteinerCards .section-card .card-containerButtons button {
+.main .main-section_2 .section-div_conteinerCards .section-card .card-containerButtons form button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -340,7 +351,7 @@
   border-radius: 10px;
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3);
 }
-.main .main-section_2 .section-div_conteinerCards .section-card .card-containerButtons button:nth-child(1) {
+.main .main-section_2 .section-div_conteinerCards .section-card .card-containerButtons form button:nth-child(1) {
   background: #5db352;
   width: 70%;
   color: white;
@@ -349,12 +360,12 @@
   letter-spacing: 2px;
   font-size: 1em;
 }
-.main .main-section_2 .section-div_conteinerCards .section-card .card-containerButtons button:nth-child(2) {
+.main .main-section_2 .section-div_conteinerCards .section-card .card-containerButtons form button:nth-child(2) {
   width: 20%;
   font-size: 1.8em;
   background: white;
 }
-.main .main-section_2 .section-div_conteinerCards .section-card .card-containerButtons button:nth-child(2) i {
+.main .main-section_2 .section-div_conteinerCards .section-card .card-containerButtons form button:nth-child(2) i {
   font-weight: 1000;
 }
 
@@ -517,6 +528,7 @@
   text-transform: uppercase;
 }
 .div_modal .conteiner-cards-fav .card-cart .cart-mid {
+  width: 100%;
   padding: 10px;
   display: flex;
   margin: 0.8px 0px;
@@ -534,6 +546,7 @@
   object-fit: contain; /* Ajusta la imagen al contenedor manteniendo su relación de aspecto */
 }
 .div_modal .conteiner-cards-fav .card-cart .cart-mid .conteiner-text-cart {
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
