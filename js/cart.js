@@ -1,18 +1,25 @@
+let footer = document.getElementById("f");
 let carri = document.getElementById("cart");
 let conteinerCards = document.getElementById("conteinerCardsFav");
 let modal = document.getElementById("modal");
 let cerrar = document.getElementById("close");
+let footerCart = document.getElementById("event");
+let sectionP = document.getElementById("p-totales");
 let objetoString = localStorage.getItem("Carrito");
 let objeto = JSON.parse(objetoString);
 console.log(objeto);
 
 carri.addEventListener("click", () => {
+  const totales = total();
   modal.classList.add("show");
   body.classList.add("over");
   objetoString = localStorage.getItem("Carrito");
   objeto = JSON.parse(objetoString);
   let modalCart = renderCart();
   conteinerCards.innerHTML = modalCart;
+
+  footerCart.style.display = "flex";
+  footer.style.display = "none";
 });
 
 function verRepetidos() {
@@ -32,16 +39,24 @@ function verRepetidos() {
 
 function renderCart() {
   let cartClean = verRepetidos();
+  const totales = total();
+  const HTMLFooterCart = `
+  <p>$${totales.precioTotal}</p>
+  <p>${totales.envioTotal}</p>
+  <p class="bold">$${totales.precioTotal + totales.envioTotal}</p>
+  `;
+  sectionP.innerHTML = HTMLFooterCart;
   let HTMLCart = "";
-  let envio = 1500;
+  let envio = 8000;
+  let pesos = "$";
   let suma = 0;
   cartClean.forEach((element) => {
     suma = element.precio * element.cantidad;
-    suma > 1500 ? (envio = "Gratis") : (envio = 1500);
+    suma > 8000 ? (envio = "Gratis") : (envio = 1500);
     HTMLCart += `
       <article class="card-cart">
       <section class="cart-top">
-        <p>Comprador</p>
+        <p>Vendedor</p>
       </section>
       <section class="cart-mid">
         <div class="conteiner-img-cart">
@@ -61,7 +76,7 @@ function renderCart() {
       </section>
       <section class="card-bot">
         <p>Envío</p>
-        <p> ${envio} </p>
+        <p> ${envio > 0 ? "$" : ""}${envio} </p>
       </section>
       <section class="cart-line">
         <div class="line"></div>
@@ -95,8 +110,20 @@ myForms.forEach((form) => {
 });
 
 const search = (id) => bestSellers.find((objeto) => objeto.id === parseInt(id));
+function total() {
+  let cartClean = verRepetidos();
+  let acum = 0;
+  const sumaPrecios = cartClean.reduce((acumulador, objeto) => {
+    return acumulador + objeto.precio * objeto.cantidad;
+  }, 0);
+  cartClean.forEach((element) => {
+    element.precio < 8000 ? (acum = acum + 1500) : (acum = acum + 0);
+  });
+  return { precioTotal: sumaPrecios, envioTotal: acum };
+}
+console.log(total());
 
-///ejercicio prueba borrar despues
+///ejercicio prueba borrar despues.
 let objetito = [
   {
     nombre: "pepe",

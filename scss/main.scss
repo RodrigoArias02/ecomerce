@@ -32,17 +32,21 @@
       display: none; /* Oculta la barra de desplazamiento en navegadores basados en WebKit, como Chrome y Safari */
     }
     .section-div_categories {
-      width: 100%;
-      max-width: 80px;
-      height: min-content;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      width: 100px;
+      height: 100px;
+
       margin: 0px 15px;
       cursor: pointer;
       .div-section_photo {
         display: flex;
         justify-content: center;
         align-items: center;
-        min-width: 80px;
-        width: 100%;
+
+        width: 100px;
         height: 65px;
         overflow: hidden; /* Evita el desbordamiento */
         background: $celeste-pastel;

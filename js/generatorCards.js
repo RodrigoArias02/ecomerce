@@ -8,9 +8,9 @@ let HTMLCards = "";
 let bestSellers = [
   {
     id: 1,
-    nombre: "chaqueta marron reforzada con peluche en el interior",
-    precio: 300,
-    URLImg: "chaqueta.webp",
+    nombre: "Memoria Ram Spectrum 16gb 3200mhz DIMM",
+    precio: 30000,
+    URLImg: "16gbspectrum.png",
     cantidad: 1,
     oferta: {
       estado: true,
@@ -19,9 +19,9 @@ let bestSellers = [
   },
   {
     id: 2,
-    nombre: "Zapatos de salir rojos",
+    nombre: "Placa madre ASUS PRIME",
     precio: 700,
-    URLImg: "zapatos.webp",
+    URLImg: "asusprime.webp",
     cantidad: 1,
     oferta: {
       estado: false,
@@ -30,9 +30,108 @@ let bestSellers = [
   },
   {
     id: 3,
-    nombre: "Remera blanca de algodon",
+    nombre: "Placa madre GIGABYTE b360",
     precio: 1000,
-    URLImg: "remera.webp",
+    URLImg: "b360.webp",
+    cantidad: 1,
+    oferta: {
+      estado: false,
+      porcentaje: 0,
+    },
+  },
+  {
+    id: 4,
+    nombre: "Fuente de alimentacion Corsair 600W certificacion 60 PLUS",
+    precio: 5000,
+    URLImg: "corsai.webp",
+    cantidad: 1,
+    oferta: {
+      estado: false,
+      porcentaje: 0,
+    },
+  },
+  {
+    id: 5,
+    nombre: "Disco rigido 8gb",
+    precio: 5000,
+    URLImg: "discoduro8gb.webp",
+    cantidad: 1,
+    oferta: {
+      estado: false,
+      porcentaje: 0,
+    },
+  },
+  {
+    id: 6,
+    nombre: "Disco externo kevingston",
+    precio: 5000,
+    URLImg: "discoexterno.png",
+    cantidad: 1,
+    oferta: {
+      estado: false,
+      porcentaje: 0,
+    },
+  },
+  {
+    id: 7,
+    nombre: "Fuente de alimentacion evga 600W 60 PLUS",
+    precio: 15000,
+    URLImg: "evga.png",
+    cantidad: 1,
+    oferta: {
+      estado: false,
+      porcentaje: 0,
+    },
+  },
+  {
+    id: 8,
+    nombre: "Gabinete Negro Gamer",
+    precio: 15000,
+    URLImg: "gabinete.webp",
+    cantidad: 1,
+    oferta: {
+      estado: false,
+      porcentaje: 0,
+    },
+  },
+  {
+    id: 9,
+    nombre: "Mouse Gamer EVGA con luces rgb",
+    precio: 15000,
+    URLImg: "evgamouse.webp",
+    cantidad: 1,
+    oferta: {
+      estado: false,
+      porcentaje: 0,
+    },
+  },
+  {
+    id: 10,
+    nombre: "Gabinete AEROCOOL Negro metalizado",
+    precio: 15000,
+    URLImg: "gabineteaerocool.webp",
+    cantidad: 1,
+    oferta: {
+      estado: false,
+      porcentaje: 0,
+    },
+  },
+  {
+    id: 11,
+    nombre: "Gabinete Blanco",
+    precio: 15000,
+    URLImg: "gabineteblanco.png",
+    cantidad: 1,
+    oferta: {
+      estado: false,
+      porcentaje: 0,
+    },
+  },
+  {
+    id: 12,
+    nombre: "Placa Madre Gigabyte H610M",
+    precio: 15000,
+    URLImg: "h610m.webp",
     cantidad: 1,
     oferta: {
       estado: false,
