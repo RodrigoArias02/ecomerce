@@ -90,6 +90,7 @@ let cart = [];
 let compra, elements;
 let span = document.getElementById("span-cant");
 let it = 0;
+let texto = "";
 myForms.forEach((form) => {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -97,10 +98,19 @@ myForms.forEach((form) => {
     it > 0 ? ((span.innerText = it), (span.style.display = "block")) : null;
     let formulario = e.target;
     let idobjet = 0;
+
     idobjet = formulario.children[2].value;
+
     if (idobjet != undefined) {
       compra = search(idobjet);
-
+      if (compra.nombre.length > 24) {
+        texto = compra.nombre.substring(0, 25) + "...";
+      }
+      Toastify({
+        text: texto,
+        duration: 3000,
+        className: "my-toasty",
+      }).showToast();
       cart.push(compra);
       console.log(cart);
       let transformJson = JSON.stringify(cart);
