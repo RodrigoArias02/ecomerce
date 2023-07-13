@@ -154,7 +154,7 @@ bestSellers.forEach((elemento) => {
             <p>$${elemento.precio}</p>
         </article>
         <section class="card-containerButtons">
-            <form id="formulario">
+            <form class="formulario">
                 <button>Comprar</button>
                 <button type='submit'><i class="bx bx-plus"></i></button>
                 <input type="text" value="${elemento.id}" name="" id="" hidden>

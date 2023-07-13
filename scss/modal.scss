@@ -188,6 +188,7 @@
           width: 100%;
           display: flex;
           flex-direction: column;
+          padding-left: 10px;
           p {
             &:nth-child(1) {
               font-weight: 400;
@@ -197,15 +198,15 @@
               -webkit-box-orient: vertical;
               overflow: hidden;
             }
-            &:nth-child(2) {
-              color: $gris;
-            }
-            &:nth-child(3) {
-              font-size: 0.9em;
-              color: $azul;
-              font-weight: 500;
-              margin: 10px 0px;
-            }
+          }
+          .myButton {
+            font-size: 0.9em;
+            color: $azul;
+            font-weight: 700;
+            margin: 10px 0px;
+            border: 0px;
+            background: transparent;
+            width: min-content;
           }
           .cart-text-price {
             display: flex;
