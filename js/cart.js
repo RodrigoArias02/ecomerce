@@ -42,11 +42,30 @@ carri.addEventListener("click", () => {
     let envio = 8000;
     let pesos = "$";
     let suma = 0;
+    let evaluarEnvio = totales.envioTotal;
+    console.log(evaluarEnvio); //0
+    console.log(totales.precioTotal); //0
+    if (evaluarEnvio == 0 && totales.precioTotal !== 0) {
+      console.log("if");
+      evaluarEnvio = "Gratis";
+    } else if (evaluarEnvio == 0 && totales.precioTotal == 0) {
+      evaluarEnvio = 0;
+      console.log("elseif");
+    } else {
+      evaluarEnvio = totales.envioTotal;
+      console.log("else");
+    }
+
+    let estilofoterGratis = isNaN(evaluarEnvio)
+      ? "color: green"
+      : "color: black";
     const HTMLFooterCart = `
-  <p>$${totales.precioTotal}</p>
-  <p>${totales.envioTotal}</p>
-  <p class="bold">$${totales.precioTotal + totales.envioTotal}</p>
-  `;
+      <p>$${totales.precioTotal}</p>
+      <p style="${estilofoterGratis}">${
+      evaluarEnvio >= 0 ? "$" : ""
+    }${evaluarEnvio}</p>
+      <p class="bold">$${totales.precioTotal + totales.envioTotal}</p>
+    `;
     sectionP.innerHTML = HTMLFooterCart;
 
     cartClean.forEach((element) => {
@@ -54,6 +73,7 @@ carri.addEventListener("click", () => {
       let objetoJSON = JSON.stringify(element);
       suma = precio * cantidad;
       suma > 8000 ? (envio = "Gratis") : (envio = 1500);
+      let estilo = isNaN(envio) ? "color: green" : "color: black";
       HTMLCart += `
       <article class="card-cart">
       <section class="cart-top">
@@ -77,7 +97,7 @@ carri.addEventListener("click", () => {
       </section>
       <section class="card-bot">
         <p>Envío</p>
-        <p id="envioP"> ${envio > 0 ? "$" : ""}${envio} </p>
+        <p id="envioP" style="${estilo}"> ${envio > 0 ? "$" : ""}${envio} </p>
       </section>
       <section class="cart-line">
         <div class="line"></div>
@@ -89,15 +109,18 @@ carri.addEventListener("click", () => {
   conteinerCards.addEventListener("click", function (event) {
     if (event.target.classList.contains("myButton")) {
       event.preventDefault();
-
+      it--;
+      contador = cantidadDeCompra(it);
       let input = event.target
         .closest(".conteiner-text-cart")
         .querySelector("input");
 
       let id = input.value;
       let indice = cartClean.findIndex((objeto) => objeto.id == id);
+      let indiceCart = cart.findIndex((objeto) => objeto.id == id);
       console.log("Valor del indice:", indice);
       cartClean.splice(indice, 1);
+      cart.splice(indiceCart, 1);
       console.log(cartClean);
       let cartCleanString = JSON.stringify(cartClean);
       localStorage.setItem("Carrito", cartCleanString);
@@ -116,31 +139,27 @@ carri.addEventListener("click", () => {
     });
     return { precioTotal: sumaPrecios, envioTotal: acum };
   }
-  //
-
-  //
-  //
-  //
-
-  //
 });
 const search = (id) => bestSellers.find((objeto) => objeto.id === parseInt(id));
+function cantidadDeCompra(it) {
+  let span = document.getElementById("span-cant");
+  return it > 0
+    ? ((span.innerText = it), (span.style.display = "block"))
+    : null;
+}
 let myForms = document.querySelectorAll(".formulario");
 let cart = [];
 let compra, elements;
-let span = document.getElementById("span-cant");
 let it = 0;
 let texto = "";
 myForms.forEach((form) => {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     it++;
-    it > 0 ? ((span.innerText = it), (span.style.display = "block")) : null;
     let formulario = e.target;
     let idobjet = 0;
-
     idobjet = formulario.children[2].value;
-
+    contador = cantidadDeCompra(it);
     if (idobjet != undefined) {
       compra = search(idobjet);
       texto = compra.nombre.substring(0, 25) + "...";
