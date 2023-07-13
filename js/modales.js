@@ -3,11 +3,11 @@
 export const modalFavorite = `
 <article class="article_card_fav">
   <section class="article_img">
-    <img src="img/chaqueta.webp" alt="" />
+    <img src="img/ram8gb.png" alt="" />
   </section>
   <section class="article_text">
     <p class="title_fav">
-      Campera Mujer de algodon con piel en el interior
+      Memoria Ram de 8gb 3200mhz
     </p>
     <p class="through">$7680</p>
     <span class="ofert">
@@ -24,11 +24,11 @@ export const modalFavorite = `
 </article>
 <article class="article_card_fav">
   <section class="article_img">
-    <img src="img/ropaInterior.png" alt="" />
+    <img src="img/ryzen7.png" alt="" />
   </section>
   <section class="article_text">
     <p class="title_fav">
-      Campera Mujer de algodon con piel en el interior
+      Procesador Intel core i7 14000 4.5ghz 8 nuecleos
     </p>
     <p class="through"></p>
     <span class="ofert">
@@ -45,11 +45,11 @@ export const modalFavorite = `
 </article>
 <article class="article_card_fav">
   <section class="article_img">
-    <img src="img/pantalon.jpg" alt="" />
+    <img src="img/ssdadata.png" alt="" />
   </section>
   <section class="article_text">
     <p class="title_fav">
-      Campera Mujer de algodon con piel en el interior
+      Disco solido adata 1tb 2559655 Mb/s
     </p>
     <p class="through">$7680</p>
     <span class="ofert">
@@ -66,11 +66,11 @@ export const modalFavorite = `
 </article>
 <article class="article_card_fav">
   <section class="article_img">
-    <img src="img/remera.webp" alt="" />
+    <img src="img/16gbspectrum.png" alt="" />
   </section>
   <section class="article_text">
     <p class="title_fav">
-      Campera Mujer de algodon con piel en el interior
+      Memoria Ram 16gb Marca spectrum 3600mhz
     </p>
     <p class="through"></p>
     <span class="ofert">
@@ -87,11 +87,11 @@ export const modalFavorite = `
 </article>
 <article class="article_card_fav">
   <section class="article_img">
-    <img src="img/zapatos.webp" alt="" />
+    <img src="img/corsai.webp" alt="" />
   </section>
   <section class="article_text">
     <p class="title_fav">
-      Campera Mujer de algodon con piel en el interior
+      Fuente De Alimentacion Corsair 600W 60 PLUS
     </p>
     <p class="through">$7680</p>
     <span class="ofert">
@@ -108,11 +108,11 @@ export const modalFavorite = `
 </article>
 <article class="article_card_fav">
   <section class="article_img">
-    <img src="img/ropaInterior.png" alt="" />
+    <img src="img/discoexterno.png" alt="" />
   </section>
   <section class="article_text">
     <p class="title_fav">
-      Campera Mujer de algodon con piel en el interior
+      Disco Externo Kevingstone 1TB 1500000 Mb/s
     </p>
     <p class="through"></p>
     <span class="ofert">
