@@ -1,4 +1,4 @@
-let footer = document.getElementById("f");
+let footer = document.getElementById("foterHome");
 let carri = document.getElementById("cart");
 let conteinerCards = document.getElementById("conteinerCardsFav");
 let modal = document.getElementById("modal");
@@ -7,12 +7,9 @@ let footerCart = document.getElementById("event");
 let sectionP = document.getElementById("p-totales");
 
 carri.addEventListener("click", () => {
-  //
-  //
   let objetoString = localStorage.getItem("Carrito");
   let objeto = JSON.parse(objetoString);
   let cartClean = verRepetidos();
-  console.log(cartClean);
   const totales = total();
   modal.classList.add("show");
   body.classList.add("over");
@@ -36,24 +33,18 @@ carri.addEventListener("click", () => {
   }
 
   function renderCart() {
-    console.log(">", cartClean);
     const totales = total();
     let HTMLCart = "";
     let envio = 8000;
     let pesos = "$";
     let suma = 0;
     let evaluarEnvio = totales.envioTotal;
-    console.log(evaluarEnvio); //0
-    console.log(totales.precioTotal); //0
     if (evaluarEnvio == 0 && totales.precioTotal !== 0) {
-      console.log("if");
       evaluarEnvio = "Gratis";
     } else if (evaluarEnvio == 0 && totales.precioTotal == 0) {
       evaluarEnvio = 0;
-      console.log("elseif");
     } else {
       evaluarEnvio = totales.envioTotal;
-      console.log("else");
     }
 
     let estilofoterGratis = isNaN(evaluarEnvio)
@@ -109,19 +100,23 @@ carri.addEventListener("click", () => {
   conteinerCards.addEventListener("click", function (event) {
     if (event.target.classList.contains("myButton")) {
       event.preventDefault();
-      it--;
-      contador = cantidadDeCompra(it);
       let input = event.target
         .closest(".conteiner-text-cart")
         .querySelector("input");
 
       let id = input.value;
       let indice = cartClean.findIndex((objeto) => objeto.id == id);
-      let indiceCart = cart.findIndex((objeto) => objeto.id == id);
-      console.log("Valor del indice:", indice);
+      let objetoEliminar = cart.find((objeto) => objeto.id == id);
       cartClean.splice(indice, 1);
-      cart.splice(indiceCart, 1);
-      console.log(cartClean);
+      let c = 0;
+      for (let i = cart.length - 1; i >= 0; i--) {
+        if (cart[i] === objetoEliminar) {
+          it--;
+          contador = cantidadDeCompra(it);
+          cart.splice(i, 1);
+        }
+      }
+
       let cartCleanString = JSON.stringify(cartClean);
       localStorage.setItem("Carrito", cartCleanString);
       modalCart = renderCart();
@@ -145,7 +140,7 @@ function cantidadDeCompra(it) {
   let span = document.getElementById("span-cant");
   return it > 0
     ? ((span.innerText = it), (span.style.display = "block"))
-    : null;
+    : (span.style.display = "none");
 }
 let myForms = document.querySelectorAll(".formulario");
 let cart = [];
@@ -159,6 +154,7 @@ myForms.forEach((form) => {
     let formulario = e.target;
     let idobjet = 0;
     idobjet = formulario.children[2].value;
+
     contador = cantidadDeCompra(it);
     if (idobjet != undefined) {
       compra = search(idobjet);
