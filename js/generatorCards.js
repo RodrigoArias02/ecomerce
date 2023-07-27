@@ -15,15 +15,23 @@ let HTMLCards = "";
 let elementos;
 
 async function pedirElementos() {
-  return await fetch("../json/elements.json");
+  const scriptURL = new URL("./main.js", import.meta.url); // Obtiene la URL del script actual (main.js)
+  const jsonURL = new URL("../json/elements.json", scriptURL); // Construye la URL completa del archivo JSON
+
+  try {
+    const response = await fetch(jsonURL);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error al cargar el archivo JSON:", error);
+    return null;
+  }
 }
 async function cargarElementos() {
-  const response = await pedirElementos();
-  if (response.ok) {
-    elementos = await response.json();
-  }
-  elementos.forEach(({ id, nombre, precio, URLImg }) => {
-    HTMLCards += `
+  const elementos = await pedirElementos();
+  if (elementos) {
+    elementos.forEach(({ id, nombre, precio, URLImg }) => {
+      HTMLCards += `
       <section class="section-card">
           <div class="section-div_like">
               <i class="bx bxs-heart"></i>
@@ -45,12 +53,13 @@ async function cargarElementos() {
           </section>
       </section>
       `;
-  });
-  containerBestSellers[0].innerHTML = HTMLCards;
-  containerBestSellers[1].innerHTML = HTMLCards;
-  console.log("cargaron las cards");
+    });
+    containerBestSellers[0].innerHTML = HTMLCards;
+    containerBestSellers[1].innerHTML = HTMLCards;
+    console.log("cargaron las cards");
 
-  return elementos;
+    return elementos;
+  }
 }
 const search = (id) => elementos.find((objeto) => objeto.id === parseInt(id));
 async function agregarCarrito() {
