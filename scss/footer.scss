@@ -1,12 +1,13 @@
 .footer {
   display: flex;
-  width: 101%;
+  width: 100%;
   justify-content: space-between;
   height: 60px;
   background: $verde-claro;
   border-radius: 15px 15px 0 0;
   position: fixed;
   bottom: -1px;
+
   .footer-div_icons {
     display: flex;
     align-items: center;
@@ -35,7 +36,7 @@
   display: none;
   position: fixed;
   bottom: -1px;
-  width: 101%;
+  width: 100%;
   height: 140px;
   background: white;
   flex-direction: column;
@@ -73,4 +74,63 @@
     color: white;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
   }
+}
+
+.footer-ver {
+  display: none;
+  position: fixed;
+  bottom: -1px;
+  width: 100%;
+  height: 80px;
+  background: white;
+  left: 0;
+  border-radius: 15px 15px 0 0;
+  box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3); /* Ajusta los valores según tu preferencia */
+  background-image: linear-gradient(
+    transparent,
+    rgba(0, 0, 0, 0.05)
+  ); /* Ajusta la opacidad según tu preferencia */
+  .footer-section_v {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex: 1;
+
+    &:nth-child(1) {
+      border-radius: 15px 0px 0 0;
+    }
+    &:nth-child(2) {
+      border-radius: 0px 15px 0 0;
+    }
+    p {
+      width: 34px;
+      height: 34px;
+      font-size: 2.1em;
+      font-weight: bolder;
+      &:nth-child(2) {
+        background: rgb(236, 235, 235);
+        border-radius: 6px;
+        margin: 0px 8px;
+      }
+    }
+    button {
+      background: $verde-claro;
+      padding: 13px;
+      border: 0px solid;
+      border-radius: 15px;
+      color: white;
+      font-family: "Montserrat", sans-serif;
+      letter-spacing: 1px;
+      font-weight: 700;
+      font-size: 0.9em;
+      box-shadow: inset 0 0px 40px rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+.Dnone {
+  display: none;
+}
+.Dflex {
+  display: flex;
 }

@@ -10,6 +10,9 @@ let footers = document.querySelectorAll(".footer-div_icons");
 let footerCarri = document.querySelectorAll(".footer-text");
 let conteinerCards = document.getElementById("conteinerCardsFav");
 let footerCart = document.getElementById("event");
+const footerVer = document.getElementById("footerVer");
+const headerFooterVer = document.querySelector(".section_modal_header");
+const p = document.getElementById("p-seccion");
 home.addEventListener("click", () => {
   window.location.href = "index.html";
 });
@@ -18,11 +21,22 @@ fav.addEventListener("click", () => {
   modal.classList.add("show");
   body.classList.add("over");
   conteinerCards.innerHTML = modalFavorite;
+  footer.classList.remove("Dflex");
+  footer.classList.add("Dnone");
+  p.innerHTML = "Favoritos";
 });
 
 cerrar.addEventListener("click", () => {
   modal.classList.remove("show");
   body.classList.remove("over");
-  footerCart.style.display = "none";
-  footer.style.display = "flex";
+  footerCart.classList.remove("Dflex");
+  footerCart.classList.add("Dnone");
+  footer.classList.toggle("Dflex");
+  footer.classList.toggle("Dnone");
+  footerVer.classList.remove("Dflex");
+  headerFooterVer.classList.remove("header-show");
+  headerFooterVer.classList.add("delay");
+  setTimeout(() => {
+    modal.classList.remove("color-modal");
+  }, 1000);
 });

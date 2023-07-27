@@ -132,10 +132,10 @@
     </main>
 
     <div class="div_modal" id="modal">
-      <section class="section_modal_header">
+      <section class="section_modal_header" id="modal_header">
         <article>
           <i class="bx bx-x" id="close"></i>
-          <p>Favoritos</p>
+          <p id="p-seccion">Favoritos</p>
         </article>
         <article>
           <i class="bx bx-search-alt-2"></i>
@@ -143,7 +143,16 @@
       </section>
       <div class="conteiner-cards-fav" id="conteinerCardsFav"></div>
     </div>
-
+    <section class="footer-ver" id="footerVer">
+      <div class="footer-section_v">
+        <p><i class="bx bx-minus"></i></p>
+        <p></p>
+        <p><i class="bx bx-plus"></i></p>
+      </div>
+      <div class="footer-section_v">
+        <button>Añadir al carrito</button>
+      </div>
+    </section>
     <section class="footerCart" id="event">
       <div class="footer-text">
         <section>
@@ -167,9 +176,9 @@
       </div>
       <div class="footer-div_icons" id="user"><i class="bx bxs-user"></i></div>
     </footer>
-    <script src="./js/generatorCards.js"></script>
+    <script src="./js/generatorCards.js" type="module"></script>
     <script src="./js/footer.js" type="module"></script>
     <script src="./js/modales.js" type="module"></script>
-    <script src="./js/cart.js"></script>
+    <script src="./js/cart.js" type="module"></script>
   </body>
 </html>
