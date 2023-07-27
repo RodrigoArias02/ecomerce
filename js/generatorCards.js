@@ -61,9 +61,10 @@ async function cargarElementos() {
     return elementos;
   }
 }
-const search = (id) => elementos.find((objeto) => objeto.id === parseInt(id));
+
 async function agregarCarrito() {
   let items = await cargarElementos();
+  const search = (id) => items.find((objeto) => objeto.id === parseInt(id));
   let myForms = document.querySelectorAll(".formulario");
   let cart = [];
   let compra, elements, contador;
