@@ -165,7 +165,7 @@ async function agregarCarrito() {
           </div>
           <div class="conteiner-text-cart">
             <p>${nombre}</p>
-              <input type="text" hidden value="${id}">
+              <input type="text"  value="${id}">
               <button class="myButton">Eliminar</button>
             <section class="cart-text-price">
               <select name="" id="">
@@ -187,31 +187,37 @@ async function agregarCarrito() {
       });
       return HTMLCart;
     }
+    let h = 0;
     conteinerCards.addEventListener("click", function (event) {
       if (event.target.classList.contains("myButton")) {
         event.preventDefault();
+
         let input = event.target
           .closest(".conteiner-text-cart")
           .querySelector("input");
 
+        const resultado = JSON.stringify(cartClean);
         let id = input.value;
         let indice = cartClean.findIndex((objeto) => objeto.id == id);
-        let objetoEliminar = cart.find((objeto) => objeto.id == id);
+        if (indice != -1) {
+          let objetoEliminar = cart.find((objeto) => objeto.id == id);
 
-        cartClean.splice(indice, 1);
-        let c = 0;
-        for (let i = cart.length - 1; i >= 0; i--) {
-          if (cart[i] === objetoEliminar) {
-            it--;
-            contador = cantidadDeCompra(it);
-            cart.splice(i, 1);
+          cartClean.splice(indice, 1);
+
+          let c = 0;
+          for (let i = cart.length - 1; i >= 0; i--) {
+            if (cart[i] === objetoEliminar) {
+              it--;
+              contador = cantidadDeCompra(it);
+              cart.splice(i, 1);
+            }
           }
-        }
 
-        let cartCleanString = JSON.stringify(cartClean);
-        localStorage.setItem("Carrito", cartCleanString);
-        modalCart = renderCart();
-        conteinerCards.innerHTML = modalCart;
+          let cartCleanString = JSON.stringify(cartClean);
+          localStorage.setItem("Carrito", cartCleanString);
+          modalCart = renderCart();
+          conteinerCards.innerHTML = modalCart;
+        }
       }
     });
     function total() {
@@ -243,4 +249,4 @@ async function agregarCarrito() {
   return items;
 }
 
-export { agregarCarrito };
+export { agregarCarrito, pedirElementos };
