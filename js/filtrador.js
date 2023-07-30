@@ -47,6 +47,16 @@ async function buscarPorCategoria(categoria) {
       categoria + ":",
       elementosEncontrados
     );
+    let HTMLfiltro = "";
+    elementosEncontrados.forEach(({ nombre, precio }) => {
+      HTMLfiltro += `${nombre}-${precio} \n`;
+    });
+    if (HTMLfiltro != "") {
+      alert(HTMLfiltro);
+    } else {
+      alert("No se encontraron elementos similares");
+    }
+    alert("Seccion de elementos filtrados proximamente");
     return data;
   } catch (error) {
     console.error("Error al cargar el archivo JSON:", error);

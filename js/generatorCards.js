@@ -165,7 +165,7 @@ async function agregarCarrito() {
           </div>
           <div class="conteiner-text-cart">
             <p>${nombre}</p>
-              <input type="text"  value="${id}">
+              <input type="text" hidden value="${id}">
               <button class="myButton">Eliminar</button>
             <section class="cart-text-price">
               <select name="" id="">
