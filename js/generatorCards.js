@@ -1,19 +1,40 @@
 "use strict";
-
-let footer = document.getElementById("foterHome");
-let carri = document.getElementById("cart");
-let conteinerCards = document.getElementById("conteinerCardsFav");
-let modal = document.getElementById("modal");
-let cerrar = document.getElementById("close");
-let footerCart = document.getElementById("event");
-let sectionP = document.getElementById("p-totales");
-let cartClean;
 let containerBestSellers = document.querySelectorAll(
   ".section-div_conteinerCards"
 );
 let HTMLCards = "";
 let elementos;
+async function categoriaspPedir() {
+  const scriptURL = new URL("./main.js", import.meta.url); // Obtiene la URL del script actual (main.js)
+  const jsonURL = new URL("../json/categories.json", scriptURL); // Construye la URL completa del archivo JSON
 
+  try {
+    const response = await fetch(jsonURL);
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    console.error("Error al cargar el archivo JSON:", error);
+    return null;
+  }
+}
+async function generarCategorias(item) {
+  const conteinerCategories = document.querySelector("#conteinerCategories");
+  let HTMLCards = "";
+  if (item) {
+    item.forEach(({ nombre, img }) => {
+      HTMLCards += `
+      <div class="section-div_categories">
+        <section class="div-section_photo">
+          <img src="../img/${img}" alt="" />
+        </section>
+        <p>${nombre}</p>
+      </div>
+      `;
+    });
+    conteinerCategories.innerHTML = HTMLCards;
+  }
+}
 async function pedirElementos() {
   const scriptURL = new URL("./main.js", import.meta.url); // Obtiene la URL del script actual (main.js)
   const jsonURL = new URL("../json/elements.json", scriptURL); // Construye la URL completa del archivo JSON
@@ -28,6 +49,8 @@ async function pedirElementos() {
   }
 }
 async function cargarElementos() {
+  const item = await categoriaspPedir();
+  await generarCategorias(item);
   const elementos = await pedirElementos();
   if (elementos) {
     elementos.forEach(({ id, nombre, precio, URLImg }) => {
@@ -60,193 +83,6 @@ async function cargarElementos() {
 
     return elementos;
   }
+  console.log("finalizo");
 }
-
-async function agregarCarrito() {
-  let items = await cargarElementos();
-  const search = (id) => items.find((objeto) => objeto.id === parseInt(id));
-  let myForms = document.querySelectorAll(".formulario");
-  let cart = [];
-  let compra, elements, contador;
-  let it = 0;
-  let texto = "";
-  myForms.forEach((form) => {
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      it++;
-      let formulario = e.target;
-      let idobjet = 0;
-      idobjet = formulario.children[2].value;
-
-      contador = cantidadDeCompra(it);
-      if (idobjet != undefined) {
-        compra = search(idobjet);
-        texto = compra.nombre.substring(0, 25) + "...";
-
-        Toastify({
-          text: texto,
-          duration: 3000,
-          className: "my-toasty",
-        }).showToast();
-        cart.push(compra);
-        let transformJson = JSON.stringify(cart);
-        localStorage.setItem("Carrito", transformJson);
-      }
-    });
-  });
-  carri.addEventListener("click", () => {
-    const p = document.getElementById("p-seccion");
-    let objetoString = localStorage.getItem("Carrito");
-    let objeto = JSON.parse(objetoString);
-    cartClean = verRepetidos();
-    p.innerHTML = "Carrito";
-    // const totales = total();
-    modal.classList.add("show");
-    body.classList.add("over");
-    footerCart.classList.add("Dflex");
-    footer.classList.add("Dnone");
-    footer.classList.remove("Dflex");
-    let modalCart = renderCart();
-    conteinerCards.innerHTML = modalCart;
-
-    function verRepetidos() {
-      let cartClean = [];
-      objeto.forEach((element) => {
-        const index = cartClean.findIndex((item) => item.id === element.id);
-        if (index === -1) {
-          cartClean.push(element);
-        } else {
-          cartClean[index].cantidad = (cartClean[index].cantidad || 1) + 1;
-        }
-      });
-
-      return cartClean;
-    }
-
-    function renderCart() {
-      const totales = total();
-      let HTMLCart = "";
-      let envio = 8000;
-      let pesos = "$";
-      let suma = 0;
-      let evaluarEnvio = totales.envioTotal;
-      if (evaluarEnvio == 0 && totales.precioTotal !== 0) {
-        evaluarEnvio = "Gratis";
-      } else if (evaluarEnvio == 0 && totales.precioTotal == 0) {
-        evaluarEnvio = 0;
-      } else {
-        evaluarEnvio = totales.envioTotal;
-      }
-
-      let estilofoterGratis = isNaN(evaluarEnvio)
-        ? "color: green"
-        : "color: black";
-      const HTMLFooterCart = `
-        <p>$${totales.precioTotal}</p>
-        <p style="${estilofoterGratis}">${
-        evaluarEnvio >= 0 ? "$" : ""
-      }${evaluarEnvio}</p>
-        <p class="bold">$${totales.precioTotal + totales.envioTotal}</p>
-      `;
-      sectionP.innerHTML = HTMLFooterCart;
-
-      cartClean.forEach(({ id, nombre, URLImg, cantidad, precio }) => {
-        suma = precio * cantidad;
-        suma > 8000 ? (envio = "Gratis") : (envio = 1500);
-        let estilo = isNaN(envio) ? "color: green" : "color: black";
-        HTMLCart += `
-        <article class="card-cart">
-        <section class="cart-top">
-          <p>Vendedor</p>
-        </section>
-        <section class="cart-mid">
-          <div class="conteiner-img-cart">
-            <img src="img/${URLImg}" alt="" />
-          </div>
-          <div class="conteiner-text-cart">
-            <p>${nombre}</p>
-              <input type="text" hidden value="${id}">
-              <button class="myButton">Eliminar</button>
-            <section class="cart-text-price">
-              <select name="" id="">
-                <option value="">${cantidad} u.</option>
-              </select>
-              <p>$${suma}</p>
-            </section>
-          </div>
-        </section>
-        <section class="card-bot">
-          <p>Envío</p>
-          <p id="envioP" style="${estilo}"> ${envio > 0 ? "$" : ""}${envio} </p>
-      
-        </section>
-        <section class="cart-line">
-          <div class="line"></div>
-        </section>
-        </article>`;
-      });
-      return HTMLCart;
-    }
-    let h = 0;
-    conteinerCards.addEventListener("click", function (event) {
-      if (event.target.classList.contains("myButton")) {
-        event.preventDefault();
-
-        let input = event.target
-          .closest(".conteiner-text-cart")
-          .querySelector("input");
-
-        const resultado = JSON.stringify(cartClean);
-        let id = input.value;
-        let indice = cartClean.findIndex((objeto) => objeto.id == id);
-        if (indice != -1) {
-          let objetoEliminar = cart.find((objeto) => objeto.id == id);
-
-          cartClean.splice(indice, 1);
-
-          let c = 0;
-          for (let i = cart.length - 1; i >= 0; i--) {
-            if (cart[i] === objetoEliminar) {
-              it--;
-              contador = cantidadDeCompra(it);
-              cart.splice(i, 1);
-            }
-          }
-
-          let cartCleanString = JSON.stringify(cartClean);
-          localStorage.setItem("Carrito", cartCleanString);
-          modalCart = renderCart();
-          conteinerCards.innerHTML = modalCart;
-        }
-      }
-    });
-    function total() {
-      let acum = 0;
-      let sumEnvioPorCantidad = 0;
-      let sumPrecioCantidad = 0;
-      const sumaPrecios = cartClean.reduce((acumulador, objeto) => {
-        return acumulador + objeto.precio * objeto.cantidad;
-      }, 0);
-      cartClean.forEach((element) => {
-        sumPrecioCantidad = element.cantidad * element.precio;
-        if (sumPrecioCantidad < 8000) {
-          acum = acum + 1500;
-        } else if (sumPrecioCantidad > 8000) {
-          acum = acum + 0;
-        }
-      });
-      return { precioTotal: sumaPrecios, envioTotal: acum };
-    }
-  });
-
-  function cantidadDeCompra(it) {
-    let span = document.getElementById("span-cant");
-    return it > 0
-      ? ((span.innerText = it), (span.style.display = "block"))
-      : (span.style.display = "none");
-  }
-
-  return items;
-}
-
-export { agregarCarrito, pedirElementos };
+export { cargarElementos, pedirElementos, categoriaspPedir, generarCategorias };

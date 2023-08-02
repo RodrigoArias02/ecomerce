@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/boxicons@2.0.7/css/boxicons.min.css"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <header class="header-product">
+      <section class="heaeder-section-one">
+        <i class="bx bx-chevron-left"></i>
+        <i class="bx bxs-cart"></i>
+      </section>
+      <section class="heaeder-section-two">
+        <article class="div_input-section_logo">
+          <i class="bx bx-search-alt-2"></i>
+        </article>
+        <article class="div_input-section_text">
+          <input type="text" id="categoriaInput" />
+        </article>
+        <article class="div_input-section_submit">
+          <input type="submit" id="btnSearch" value="Buscar" />
+        </article>
+      </section>
+      <section class="heaeder-section-three" id="conteinerCategories"></section>
+    </header>
+    <main>
+      <div class="conteiner-cards-filter"></div>
+    </main>
+    <section class="footer-ver" id="footerVer">
+      <div class="footer-section_v">
+        <p><i class="bx bx-minus"></i></p>
+        <p></p>
+        <p><i class="bx bx-plus"></i></p>
+      </div>
+      <div class="footer-section_v">
+        <button>Añadir al carrito</button>
+      </div>
+    </section>
+    <section class="footerCart" id="event">
+      <div class="footer-text">
+        <section>
+          <p>Productos</p>
+          <p>Envío</p>
+          <p class="bold">Total</p>
+        </section>
+        <section id="p-totales"></section>
+      </div>
+      <button>Continuar Compra</button>
+    </section>
+    <footer class="footer" id="foterHome">
+      <div class="footer-div_icons" id="home">
+        <i class="bx bxs-home"></i>
+      </div>
+      <div class="footer-div_icons" id="favorite">
+        <i class="bx bxs-heart"></i>
+      </div>
+      <div class="footer-div_icons" id="cart">
+        <i class="bx bxs-cart"></i><span id="span-cant"></span>
+      </div>
+      <div class="footer-div_icons" id="user"><i class="bx bxs-user"></i></div>
+    </footer>
+    <script src="../js/filtrador.js" type="module"></script>
+    <script src="../js/generatorCardsFilter.js" type="module"></script>
+    <script src="../js/abrirCard.js" type="module"></script>
+  </body>
+</html>

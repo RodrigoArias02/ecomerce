@@ -1,5 +1,5 @@
 "use strict";
-import { agregarCarrito } from "./generatorCards.js";
+import { cargarElementos } from "./generatorCards.js";
 
 async function createCompraHTML(objetoEncontrado) {
   if (!objetoEncontrado) {
@@ -67,7 +67,7 @@ async function createCompraHTML(objetoEncontrado) {
 async function botonMirar() {
   const txt = `        Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, dignissimos. Dolore quos praesentium, hic, modi tempora explicabo temporibus eum quia mollitia minima fugiat, deserunt commodi doloribus. Nisi culpa aliquid esse.
   `;
-  const items = await agregarCarrito();
+  const items = await cargarElementos();
   const btnComprar = document.querySelectorAll(".btnComprar");
   let footer = document.getElementById("foterHome");
   const footerVer = document.getElementById("footerVer");
@@ -109,5 +109,4 @@ async function botonMirar() {
     });
   });
 }
-
-botonMirar();
+export { botonMirar };

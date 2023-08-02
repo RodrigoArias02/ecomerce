@@ -1,4 +1,4 @@
-import { pedirElementos } from "./generatorCards.js";
+// import { pedirElementos } from "./generatorCards.js";
 // Función para buscar elementos por categoría
 // function obtenerUrlBase() {
 //   // Verificar si estamos en un entorno local o en línea
@@ -39,20 +39,20 @@ async function buscarPorCategoria(categoria) {
   try {
     const response = await fetch(jsonURL);
     const data = await response.json();
+
     const elementosEncontrados = data.filter(
       (elemento) => elemento.categoria == categoria
     );
-    console.log(
-      "Elementos encontrados para la categoría",
-      categoria + ":",
-      elementosEncontrados
-    );
-    let HTMLfiltro = "";
-    elementosEncontrados.forEach(({ nombre, precio }) => {
-      HTMLfiltro += `${nombre}-${precio} \n`;
-    });
-    if (HTMLfiltro != "") {
-      alert(HTMLfiltro);
+    const cadenaJSON = JSON.stringify(elementosEncontrados);
+    const URL = window.location.pathname.split("/").pop().split(".").shift();
+    console.log(URL);
+    if (elementosEncontrados != "") {
+      localStorage.setItem("elementos", cadenaJSON);
+      if (URL != "productos") {
+        window.location.href = "pages/productos.html";
+      } else {
+        window.location.href = "productos.html";
+      }
     } else {
       alert("No se encontraron elementos similares");
     }
@@ -68,5 +68,6 @@ async function buscarPorCategoria(categoria) {
 const btnSearch = document.getElementById("btnSearch");
 btnSearch.addEventListener("click", () => {
   const categoriaBuscada = realizarPeticion();
+
   buscarPorCategoria(categoriaBuscada);
 });

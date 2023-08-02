@@ -1,0 +1,34 @@
+[
+  {
+    "nombre": "Procesadores",
+    "img": "intel7.png"
+  },
+  {
+    "nombre": "Placas Madre",
+    "img": "b360.webp"
+  },
+  {
+    "nombre": "Memorias Ram",
+    "img": "ram8gb.png"
+  },
+  {
+    "nombre": "Almacenamiento",
+    "img": "m2tb.png"
+  },
+  {
+    "nombre": "Fuentes",
+    "img": "corsai.webp"
+  },
+  {
+    "nombre": "Gabinetes",
+    "img": "gabineteaerocool.webp"
+  },
+  {
+    "nombre": "Placas de video",
+    "img": "intel7.png"
+  },
+  {
+    "nombre": "Perifericos",
+    "img": "msivigor.png"
+  }
+]
