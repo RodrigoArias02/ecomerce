@@ -68,7 +68,7 @@ async function createCompraHTML(objetoEncontrado) {
 
   const conteinerCards = document.getElementById("conteinerCardsFav");
   modal.classList.add("show");
-  if (URLL === "index") {
+  if (URLL === "") {
     body.classList.add("over");
   }
 
@@ -103,7 +103,7 @@ async function botonMirar() {
       modal.classList.add("color-modal");
       footerVer.classList.add("Dflex");
       console.log("URL:" + URLL);
-      if (URLL === "index") {
+      if (URLL === "") {
         footer.classList.add("Dnone");
         footer.classList.remove("Dflex");
       }
@@ -135,7 +135,7 @@ async function botonMirar() {
     });
   });
 }
-if (URL == "productos") {
+if (URLL == "productos") {
   await botonMirar();
 } else {
   console.log("generarElementos");
