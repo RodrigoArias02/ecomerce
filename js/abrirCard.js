@@ -1,8 +1,8 @@
 "use strict";
 import { cargarElementos } from "./generatorCards.js";
 
-const URL = window.location.pathname.split("/").pop().split(".").shift();
-console.log(URL);
+const URLL = window.location.pathname.split("/").pop().split(".").shift();
+
 let items;
 console.log("iniciamos");
 async function createCompraHTML(objetoEncontrado) {
@@ -17,7 +17,7 @@ async function createCompraHTML(objetoEncontrado) {
           <section class="object-img">
             <article class="body-img">
               <img src="${
-                URL === "productos" ? "../" : ""
+                URLL === "productos" ? "../" : ""
               }img/${URLImg}" alt="" />
             </article>
           </section>
@@ -43,7 +43,7 @@ async function createCompraHTML(objetoEncontrado) {
                 <div class="card-relacionados">
                   <article class="article-img">
                     <img src="${
-                      URL === "productos" ? "../" : ""
+                      URLL === "productos" ? "../" : ""
                     }img/${URLImg}" alt="" />
                   </article>
                   <article class="article-relacionados_text">
@@ -54,7 +54,7 @@ async function createCompraHTML(objetoEncontrado) {
                 <div class="card-relacionados">
                   <article class="article-img">
                     <img src="${
-                      URL === "productos" ? "../" : ""
+                      URLL === "productos" ? "../" : ""
                     }img/${URLImg}" alt="" />
                   </article>
                   <article class="article-relacionados_text">
@@ -68,7 +68,7 @@ async function createCompraHTML(objetoEncontrado) {
 
   const conteinerCards = document.getElementById("conteinerCardsFav");
   modal.classList.add("show");
-  if (URL === "index") {
+  if (URLL === "index") {
     body.classList.add("over");
   }
 
@@ -81,7 +81,7 @@ async function botonMirar() {
   const txt = `        Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, dignissimos. Dolore quos praesentium, hic, modi tempora explicabo temporibus eum quia mollitia minima fugiat, deserunt commodi doloribus. Nisi culpa aliquid esse.
   `;
 
-  if (URL === "productos") {
+  if (URLL === "productos") {
     console.log("generarCards");
     items = await cargarElementos();
     console.log(items);
@@ -102,7 +102,8 @@ async function botonMirar() {
       p.innerHTML = "";
       modal.classList.add("color-modal");
       footerVer.classList.add("Dflex");
-      if (URL === "index") {
+      console.log("URL:" + URLL);
+      if (URLL === "index") {
         footer.classList.add("Dnone");
         footer.classList.remove("Dflex");
       }
