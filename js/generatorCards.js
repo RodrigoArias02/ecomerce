@@ -28,7 +28,7 @@ async function generarCategorias(item) {
       HTMLCards += `
       <div class="section-div_categories">
         <section class="div-section_photo">
-          <img src="../img/${img}" alt="" />
+          <img src="${URLL === "productos" ? "../" : ""}img/${img}" alt="" />
         </section>
         <p>${nombre}</p>
       </div>
