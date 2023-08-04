@@ -13,6 +13,7 @@ let footerCart = document.getElementById("event");
 const footerVer = document.getElementById("footerVer");
 const headerFooterVer = document.querySelector(".section_modal_header");
 const p = document.getElementById("p-seccion");
+const volver = document.querySelector(".bx-chevron-left");
 const URLL = window.location.pathname.split("/").pop().split(".").shift();
 if (URLL === "" || URLL === "index") {
   home.addEventListener("click", () => {
@@ -44,3 +45,8 @@ cerrar.addEventListener("click", () => {
     modal.classList.remove("color-modal");
   }, 1000);
 });
+if (URLL === "productos") {
+  volver.addEventListener("click", () => {
+    window.location.href = "index.html";
+  });
+}
