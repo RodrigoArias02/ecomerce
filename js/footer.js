@@ -14,7 +14,7 @@ const footerVer = document.getElementById("footerVer");
 const headerFooterVer = document.querySelector(".section_modal_header");
 const p = document.getElementById("p-seccion");
 const URLL = window.location.pathname.split("/").pop().split(".").shift();
-if (URLL === "") {
+if (URLL === "" || URLL === "index") {
   home.addEventListener("click", () => {
     window.location.href = "index.html";
   });
@@ -30,7 +30,7 @@ if (URLL === "") {
 }
 cerrar.addEventListener("click", () => {
   modal.classList.remove("show");
-  if (URLL === "") {
+  if (URLL === "" || URLL === "index") {
     body.classList.remove("over");
     footerCart.classList.remove("Dflex");
     footerCart.classList.add("Dnone");

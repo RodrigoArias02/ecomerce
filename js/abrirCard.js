@@ -68,7 +68,7 @@ async function createCompraHTML(objetoEncontrado) {
 
   const conteinerCards = document.getElementById("conteinerCardsFav");
   modal.classList.add("show");
-  if (URLL === "") {
+  if (URLL === "" || URLL === "index") {
     body.classList.add("over");
   }
 
@@ -103,7 +103,7 @@ async function botonMirar() {
       modal.classList.add("color-modal");
       footerVer.classList.add("Dflex");
       console.log("URL:" + URLL);
-      if (URLL === "") {
+      if (URLL === "" || URLL === "index") {
         footer.classList.add("Dnone");
         footer.classList.remove("Dflex");
       }
