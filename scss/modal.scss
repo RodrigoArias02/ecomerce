@@ -395,11 +395,17 @@
               display: flex;
               flex-direction: column;
               justify-content: space-evenly;
-              padding: 10px 15px 10px 0px;
+
               p {
                 &:nth-child(1) {
-                  font-size: 1.3em;
+                  padding: 0px 2px;
+                  width: 100%;
+                  font-size: 1.1em;
                   font-weight: 500;
+                  display: -webkit-box;
+                  -webkit-line-clamp: 1;
+                  -webkit-box-orient: vertical;
+                  overflow: hidden;
                 }
                 &:nth-child(2) {
                   font-size: 1.1em;

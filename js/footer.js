@@ -13,26 +13,30 @@ let footerCart = document.getElementById("event");
 const footerVer = document.getElementById("footerVer");
 const headerFooterVer = document.querySelector(".section_modal_header");
 const p = document.getElementById("p-seccion");
-home.addEventListener("click", () => {
-  window.location.href = "index.html";
-});
+const URL = window.location.pathname.split("/").pop().split(".").shift();
+if (URL === "index") {
+  home.addEventListener("click", () => {
+    window.location.href = "index.html";
+  });
+  fav.addEventListener("click", () => {
+    modal.classList.add("show");
+    body.classList.add("over");
 
-fav.addEventListener("click", () => {
-  modal.classList.add("show");
-  body.classList.add("over");
-  conteinerCards.innerHTML = modalFavorite;
-  footer.classList.remove("Dflex");
-  footer.classList.add("Dnone");
-  p.innerHTML = "Favoritos";
-});
-
+    conteinerCards.innerHTML = modalFavorite;
+    footer.classList.remove("Dflex");
+    footer.classList.add("Dnone");
+    p.innerHTML = "Favoritos";
+  });
+}
 cerrar.addEventListener("click", () => {
   modal.classList.remove("show");
-  body.classList.remove("over");
-  footerCart.classList.remove("Dflex");
-  footerCart.classList.add("Dnone");
-  footer.classList.toggle("Dflex");
-  footer.classList.toggle("Dnone");
+  if (URL === "index") {
+    body.classList.remove("over");
+    footerCart.classList.remove("Dflex");
+    footerCart.classList.add("Dnone");
+    footer.classList.toggle("Dflex");
+    footer.classList.toggle("Dnone");
+  }
   footerVer.classList.remove("Dflex");
   headerFooterVer.classList.remove("header-show");
   headerFooterVer.classList.add("delay");

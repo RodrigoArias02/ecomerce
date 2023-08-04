@@ -1,6 +1,10 @@
 "use strict";
 import { cargarElementos } from "./generatorCards.js";
 
+const URL = window.location.pathname.split("/").pop().split(".").shift();
+console.log(URL);
+let items;
+console.log("iniciamos");
 async function createCompraHTML(objetoEncontrado) {
   if (!objetoEncontrado) {
     console.log("No se encontró ningún objeto con el id:", idobject);
@@ -12,7 +16,9 @@ async function createCompraHTML(objetoEncontrado) {
   const HTMLCompra = `
           <section class="object-img">
             <article class="body-img">
-              <img src="img/${URLImg}" alt="" />
+              <img src="${
+                URL === "productos" ? "../" : ""
+              }img/${URLImg}" alt="" />
             </article>
           </section>
           <section class="body-object">
@@ -36,20 +42,24 @@ async function createCompraHTML(objetoEncontrado) {
               <section class="section-relacionados_cards">
                 <div class="card-relacionados">
                   <article class="article-img">
-                    <img src="img/h610m.webp" alt="" />
+                    <img src="${
+                      URL === "productos" ? "../" : ""
+                    }img/${URLImg}" alt="" />
                   </article>
                   <article class="article-relacionados_text">
-                    <p>Fuente</p>
-                    <p>$200</p>
+                  <p>${nombre}</p>
+                  <p>$${precio}</p>
                   </article>
                 </div>
                 <div class="card-relacionados">
                   <article class="article-img">
-                    <img src="img/h610m.webp" alt="" />
+                    <img src="${
+                      URL === "productos" ? "../" : ""
+                    }img/${URLImg}" alt="" />
                   </article>
                   <article class="article-relacionados_text">
-                    <p>Fuente</p>
-                    <p>$200</p>
+                    <p>${nombre}</p>
+                    <p>$${precio}</p>
                   </article>
                 </div>
               </section>
@@ -58,7 +68,10 @@ async function createCompraHTML(objetoEncontrado) {
 
   const conteinerCards = document.getElementById("conteinerCardsFav");
   modal.classList.add("show");
-  body.classList.add("over");
+  if (URL === "index") {
+    body.classList.add("over");
+  }
+
   conteinerCards.innerHTML = HTMLCompra;
 
   console.log(objetoEncontrado);
@@ -67,7 +80,16 @@ async function createCompraHTML(objetoEncontrado) {
 async function botonMirar() {
   const txt = `        Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, dignissimos. Dolore quos praesentium, hic, modi tempora explicabo temporibus eum quia mollitia minima fugiat, deserunt commodi doloribus. Nisi culpa aliquid esse.
   `;
-  const items = await cargarElementos();
+
+  if (URL === "productos") {
+    console.log("generarCards");
+    items = await cargarElementos();
+    console.log(items);
+  } else {
+    console.log("generarElementos");
+    items = await cargarElementos();
+  }
+
   const btnComprar = document.querySelectorAll(".btnComprar");
   let footer = document.getElementById("foterHome");
   const footerVer = document.getElementById("footerVer");
@@ -80,20 +102,23 @@ async function botonMirar() {
       p.innerHTML = "";
       modal.classList.add("color-modal");
       footerVer.classList.add("Dflex");
-      footer.classList.add("Dnone");
-      footer.classList.remove("Dflex");
+      if (URL === "index") {
+        footer.classList.add("Dnone");
+        footer.classList.remove("Dflex");
+      }
       headerFooterVer.classList.add("header-show");
       headerFooterVer.classList.remove("delay");
 
-      const formulario = btn.closest(".formulario");
-      const idobject = formulario.querySelector("input").value;
+      let formulario = btn.closest(".formulario");
+      let idobject = formulario.querySelector("input").value;
       console.log("Producto ID:", idobject);
 
-      const objetoEncontrado = items.find((objeto) => objeto.id == idobject);
+      let objetoEncontrado = items.find((objeto) => objeto.id == idobject);
+      console.log(objetoEncontrado);
       createCompraHTML(objetoEncontrado);
-      const descripcion = document.getElementById("descripcion");
-      const especificaciones = document.getElementById("especificaciones");
-      const contenedor = document.getElementById("contenedor-descripcion");
+      let descripcion = document.getElementById("descripcion");
+      let especificaciones = document.getElementById("especificaciones");
+      let contenedor = document.getElementById("contenedor-descripcion");
 
       descripcion.addEventListener("click", () => {
         descripcion.classList.add("animacion-activada");
@@ -108,5 +133,15 @@ async function botonMirar() {
       });
     });
   });
+}
+if (URL === "productos") {
+  const volver = document.querySelector(".bx-chevron-left");
+  volver.addEventListener("click", () => {
+    window.location.href = "../index.html";
+  });
+  await botonMirar();
+} else {
+  console.log("generarElementos");
+  items = await cargarElementos();
 }
 export { botonMirar };

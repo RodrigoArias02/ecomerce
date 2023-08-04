@@ -32,6 +32,18 @@
     <main>
       <div class="conteiner-cards-filter"></div>
     </main>
+    <div class="div_modal" id="modal">
+      <section class="section_modal_header" id="modal_header">
+        <article>
+          <i class="bx bx-x" id="close"></i>
+          <p id="p-seccion">Favoritos</p>
+        </article>
+        <article>
+          <i class="bx bx-search-alt-2"></i>
+        </article>
+      </section>
+      <div class="conteiner-cards-fav" id="conteinerCardsFav"></div>
+    </div>
     <section class="footer-ver" id="footerVer">
       <div class="footer-section_v">
         <p><i class="bx bx-minus"></i></p>
@@ -53,20 +65,10 @@
       </div>
       <button>Continuar Compra</button>
     </section>
-    <footer class="footer" id="foterHome">
-      <div class="footer-div_icons" id="home">
-        <i class="bx bxs-home"></i>
-      </div>
-      <div class="footer-div_icons" id="favorite">
-        <i class="bx bxs-heart"></i>
-      </div>
-      <div class="footer-div_icons" id="cart">
-        <i class="bx bxs-cart"></i><span id="span-cant"></span>
-      </div>
-      <div class="footer-div_icons" id="user"><i class="bx bxs-user"></i></div>
-    </footer>
+
+    <script src="../js/footer.js" type="module"></script>
     <script src="../js/filtrador.js" type="module"></script>
-    <script src="../js/generatorCardsFilter.js" type="module"></script>
+    <script src="../js/generatorCards.js" type="module"></script>
     <script src="../js/abrirCard.js" type="module"></script>
   </body>
 </html>

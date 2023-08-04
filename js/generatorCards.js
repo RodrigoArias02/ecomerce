@@ -4,10 +4,11 @@ let containerBestSellers = document.querySelectorAll(
 );
 let HTMLCards = "";
 let elementos;
+const URLL = window.location.pathname.split("/").pop().split(".").shift();
+console.log(URLL);
+const scriptURL = new URL("./main.js", import.meta.url); // Obtiene la URL del script actual (main.js)
 async function categoriaspPedir() {
-  const scriptURL = new URL("./main.js", import.meta.url); // Obtiene la URL del script actual (main.js)
   const jsonURL = new URL("../json/categories.json", scriptURL); // Construye la URL completa del archivo JSON
-
   try {
     const response = await fetch(jsonURL);
     const data = await response.json();
@@ -36,7 +37,6 @@ async function generarCategorias(item) {
   }
 }
 async function pedirElementos() {
-  const scriptURL = new URL("./main.js", import.meta.url); // Obtiene la URL del script actual (main.js)
   const jsonURL = new URL("../json/elements.json", scriptURL); // Construye la URL completa del archivo JSON
 
   try {
@@ -52,9 +52,52 @@ async function cargarElementos() {
   const item = await categoriaspPedir();
   await generarCategorias(item);
   const elementos = await pedirElementos();
-  if (elementos) {
-    elementos.forEach(({ id, nombre, precio, URLImg }) => {
-      HTMLCards += `
+  if (URLL == "productos") {
+    const datosAlmacenados = localStorage.getItem("elementos");
+    const contenedorCardsFilter = document.querySelector(
+      ".conteiner-cards-filter"
+    );
+    let HTMLCards = "";
+    if (datosAlmacenados) {
+      try {
+        const datosArray = JSON.parse(datosAlmacenados);
+        console.log(datosArray);
+        datosArray.forEach(({ id, nombre, precio, URLImg }) => {
+          HTMLCards += `
+              <section class="section-card">
+                  <div class="section-div_like">
+                      <i class="bx bxs-heart"></i>
+                  </div>
+                  <div class="card-containerImg">
+                      <img src="../img/${URLImg}" alt="" />
+                  </div>
+                  <article class="card-containerText">
+                      <p>${nombre}</p>
+                      <p>$${precio}</p>
+                      <p>$${precio}</p>
+                  </article>
+                  <section class="card-containerButtons">
+                    <form class="formulario">
+                      <button type="button" class="btnComprar">Comprar</button>
+                      <button type="submit"><i class="bx bx-plus"></i></button>
+                      <input type="text" value="${id}" name="" id="" hidden>
+                    </form>
+                  </section>
+              </section>
+              `;
+        });
+        contenedorCardsFilter.innerHTML = HTMLCards;
+        return datosArray;
+      } catch (error) {
+        console.error("Error al deserializar los datos:", error);
+      }
+    } else {
+      console.log("No se encontraron similitudes.");
+    }
+  } else {
+    if (elementos) {
+      elementos.forEach(({ id, nombre, precio, URLImg }) => {
+        HTMLCards += `
       <section class="section-card">
           <div class="section-div_like">
               <i class="bx bxs-heart"></i>
@@ -76,12 +119,12 @@ async function cargarElementos() {
           </section>
       </section>
       `;
-    });
-    containerBestSellers[0].innerHTML = HTMLCards;
-    containerBestSellers[1].innerHTML = HTMLCards;
-    console.log("cargaron las cards");
-
-    return elementos;
+      });
+      containerBestSellers[0].innerHTML = HTMLCards;
+      containerBestSellers[1].innerHTML = HTMLCards;
+      console.log("cargaron las cards");
+      return elementos;
+    }
   }
   console.log("finalizo");
 }
