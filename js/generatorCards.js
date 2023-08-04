@@ -6,8 +6,9 @@ let HTMLCards = "";
 let elementos;
 const URLL = window.location.pathname.split("/").pop().split(".").shift();
 console.log(URLL);
-const scriptURL = new URL("./main.js", import.meta.url); // Obtiene la URL del script actual (main.js)
+
 async function categoriaspPedir() {
+  const scriptURL = new URL("./main.js", import.meta.url); // Obtiene la URL del script actual (main.js)
   const jsonURL = new URL("../json/categories.json", scriptURL); // Construye la URL completa del archivo JSON
   try {
     const response = await fetch(jsonURL);
@@ -37,6 +38,7 @@ async function generarCategorias(item) {
   }
 }
 async function pedirElementos() {
+  const scriptURL = new URL("./main.js", import.meta.url); // Obtiene la URL del script actual (main.js)
   const jsonURL = new URL("../json/elements.json", scriptURL); // Construye la URL completa del archivo JSON
 
   try {

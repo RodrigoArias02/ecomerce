@@ -134,11 +134,7 @@ async function botonMirar() {
     });
   });
 }
-if (URL === "productos") {
-  const volver = document.querySelector(".bx-chevron-left");
-  volver.addEventListener("click", () => {
-    window.location.href = "../index.html";
-  });
+if (URL == "productos") {
   await botonMirar();
 } else {
   console.log("generarElementos");
