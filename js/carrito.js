@@ -67,12 +67,6 @@ function renderCart(cartClean) {
       `;
   sectionP.innerHTML = HTMLFooterCart;
 
-  let datosLocalStorage = localStorage.getItem("carrito");
-  if (datosLocalStorage != "") {
-    cartClean = JSON.parse(datosLocalStorage);
-  } else {
-    cartClean = [];
-  }
   cartClean.forEach(({ id, nombre, URLImg, cantidad, precio }) => {
     suma = precio * cantidad;
     suma > 8000 ? (envio = "Gratis") : (envio = 1500);
