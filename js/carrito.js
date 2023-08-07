@@ -68,11 +68,10 @@ function renderCart(cartClean) {
   sectionP.innerHTML = HTMLFooterCart;
 
   let datosLocalStorage = localStorage.getItem("carrito");
-  if (
-    datosLocalStorage != "" ||
-    (datosLocalStorage != undefined && cartClean == [])
-  ) {
+  if (datosLocalStorage != "") {
     cartClean = JSON.parse(datosLocalStorage);
+  } else {
+    cartClean = [];
   }
   cartClean.forEach(({ id, nombre, URLImg, cantidad, precio }) => {
     suma = precio * cantidad;
@@ -199,7 +198,7 @@ async function cargarCodigoCarrito(items) {
 
         if (cantidadObjetoEliminar == 1) {
           cartClean.splice(indice, 1);
-          localStorage.setItem("carrito", cartClean);
+          localStorage.setItem("carrito", JSON.stringify(cartClean));
         } else if (objetoEliminar.cantidad > 1) {
           if (indice > -1) {
             // Modificamos el valor de la clave 'valor' en el objeto correspondiente.
