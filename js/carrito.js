@@ -1,8 +1,5 @@
-import { cargarElementos } from "./generatorCards.js";
-
 let cart = [];
 let compra, elements, contador, modalCart;
-let it = 0;
 let texto = "";
 let carri = document.getElementById("cart");
 let conteinerCards = document.getElementById("conteinerCardsFav");
@@ -11,7 +8,20 @@ let modal = document.getElementById("modal");
 let cerrar = document.getElementById("close");
 let footerCart = document.getElementById("event");
 let sectionP = document.getElementById("p-totales");
+let spanCantidad = document.getElementById("span-cant");
 let cartClean;
+let acumCantidad = 0;
+const URLL = window.location.pathname.split("/").pop().split(".").shift();
+function cantidadDeCompra(accion, valor) {
+  if (accion == "sumar") {
+    acumCantidad = acumCantidad + valor;
+  } else if (accion == "eliminar") {
+    acumCantidad = acumCantidad - valor;
+  }
+
+  spanCantidad.innerText = acumCantidad;
+  return acumCantidad;
+}
 
 function total(cartClean) {
   let acum = 0;
@@ -33,7 +43,7 @@ function total(cartClean) {
 
 function renderCart(cartClean) {
   const totales = total(cartClean);
-  console.log("entraste a render");
+
   let HTMLCart = "";
   let envio = 8000;
   let pesos = "$";
@@ -57,6 +67,13 @@ function renderCart(cartClean) {
       `;
   sectionP.innerHTML = HTMLFooterCart;
 
+  let datosLocalStorage = localStorage.getItem("carrito");
+  if (
+    datosLocalStorage != "" ||
+    (datosLocalStorage != undefined && cartClean == [])
+  ) {
+    cartClean = JSON.parse(datosLocalStorage);
+  }
   cartClean.forEach(({ id, nombre, URLImg, cantidad, precio }) => {
     suma = precio * cantidad;
     suma > 8000 ? (envio = "Gratis") : (envio = 1500);
@@ -68,7 +85,7 @@ function renderCart(cartClean) {
       </section>
       <section class="cart-mid">
         <div class="conteiner-img-cart">
-          <img src="img/${URLImg}" alt="" />
+          <img src="${URLL === "productos" ? "../" : ""}img/${URLImg}" alt="" />
         </div>
         <div class="conteiner-text-cart">
           <p>${nombre}</p>
@@ -120,11 +137,11 @@ async function mandarAlCarrito(items) {
   myForms.forEach((form) => {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
-      it++;
+
       let formulario = e.target;
       let idobjet = 0;
       idobjet = formulario.children[2].value;
-      //   contador = cantidadDeCompra(it);
+      cantidadDeCompra("sumar", 1);
       if (idobjet != undefined) {
         compra = search(idobjet);
 
@@ -135,6 +152,9 @@ async function mandarAlCarrito(items) {
           className: "my-toasty",
         }).showToast();
         cart.push(compra);
+        cartClean = verRepetidos(cart);
+        localStorage.setItem("carrito", JSON.stringify(cartClean));
+        console.log("mandamos al localStorege");
       }
     });
   });
@@ -143,18 +163,18 @@ async function mandarAlCarrito(items) {
 
 async function cargarCodigoCarrito(items) {
   cart = await mandarAlCarrito(items);
-  console.log("items cuando recuen se cargan");
-  console.log(items);
   carri.addEventListener("click", () => {
     const p = document.getElementById("p-seccion");
     cartClean = verRepetidos(cart);
-    p.innerHTML = "Carrito";
 
+    p.innerHTML = "Carrito";
     modal.classList.add("show");
-    body.classList.add("over");
+    if (URLL == "index" || URLL == "") {
+      body.classList.add("over");
+      footer.classList.add("Dnone");
+      footer.classList.remove("Dflex");
+    }
     footerCart.classList.add("Dflex");
-    footer.classList.add("Dnone");
-    footer.classList.remove("Dflex");
 
     let modalCart = renderCart(cartClean);
     conteinerCards.innerHTML = modalCart;
@@ -165,8 +185,7 @@ async function cargarCodigoCarrito(items) {
     if (event.target.classList.contains("myButton")) {
       event.preventDefault();
 
-      console.log("cart>");
-      console.log(cart);
+      cantidadDeCompra("eliminar", 1);
       let input = event.target
         .closest(".conteiner-text-cart")
         .querySelector("input");
@@ -177,21 +196,18 @@ async function cargarCodigoCarrito(items) {
       if (indice != -1) {
         let objetoEliminar = cartClean.find((objeto) => objeto.id == id);
         let cantidadObjetoEliminar = objetoEliminar.cantidad;
-        console.log("cantidad: " + cantidadObjetoEliminar);
-        console.log("objeto Eliminar");
-        console.log(objetoEliminar);
+
         if (cantidadObjetoEliminar == 1) {
           cartClean.splice(indice, 1);
-          console.log("borramos");
+          localStorage.setItem("carrito", cartClean);
         } else if (objetoEliminar.cantidad > 1) {
-          console.log("indice " + indice);
           if (indice > -1) {
             // Modificamos el valor de la clave 'valor' en el objeto correspondiente.
             cartClean[indice].cantidad -= 1;
+            localStorage.setItem("carrito", JSON.stringify(cartClean));
           }
         }
         let objetoEliminarCart = cart.findIndex((objeto) => objeto.id == id);
-        //   contador = cantidadDeCompra(it);
 
         cart.splice(objetoEliminarCart, 1);
       }
@@ -199,8 +215,6 @@ async function cargarCodigoCarrito(items) {
       conteinerCards.innerHTML = modalCart;
     }
   });
-  console.log("items cuando estan por retornar--->");
-  console.log(items);
-  return items;
+  return cartClean;
 }
 export { cargarCodigoCarrito };

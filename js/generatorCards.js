@@ -5,7 +5,6 @@ let containerBestSellers = document.querySelectorAll(
 let HTMLCards = "";
 let elementos;
 const URLL = window.location.pathname.split("/").pop().split(".").shift();
-console.log(URLL);
 
 async function categoriaspPedir() {
   const scriptURL = new URL("./main.js", import.meta.url); // Obtiene la URL del script actual (main.js)
@@ -63,7 +62,6 @@ async function cargarElementos() {
     if (datosAlmacenados) {
       try {
         const datosArray = JSON.parse(datosAlmacenados);
-        console.log(datosArray);
         datosArray.forEach(({ id, nombre, precio, URLImg }) => {
           HTMLCards += `
               <section class="section-card">
@@ -124,10 +122,9 @@ async function cargarElementos() {
       });
       containerBestSellers[0].innerHTML = HTMLCards;
       containerBestSellers[1].innerHTML = HTMLCards;
-      console.log("cargaron las cards");
+
       return elementos;
     }
   }
-  console.log("finalizo");
 }
 export { cargarElementos, pedirElementos, categoriaspPedir, generarCategorias };

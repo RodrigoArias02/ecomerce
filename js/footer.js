@@ -15,6 +15,7 @@ const headerFooterVer = document.querySelector(".section_modal_header");
 const p = document.getElementById("p-seccion");
 const volver = document.querySelector(".bx-chevron-left");
 const URLL = window.location.pathname.split("/").pop().split(".").shift();
+
 if (URLL === "" || URLL === "index") {
   home.addEventListener("click", () => {
     window.location.href = "index.html";
@@ -30,14 +31,20 @@ if (URLL === "" || URLL === "index") {
   });
 }
 cerrar.addEventListener("click", () => {
+  let spanCantidad = document.getElementById("span-cant");
+  let cantidad = parseInt(spanCantidad.textContent);
+  if (cantidad === 0) {
+    spanCantidad.textContent = "";
+  }
   modal.classList.remove("show");
   if (URLL === "" || URLL === "index") {
     body.classList.remove("over");
-    footerCart.classList.remove("Dflex");
-    footerCart.classList.add("Dnone");
+
     footer.classList.toggle("Dflex");
     footer.classList.toggle("Dnone");
   }
+  footerCart.classList.remove("Dflex");
+  footerCart.classList.add("Dnone");
   footerVer.classList.remove("Dflex");
   headerFooterVer.classList.remove("header-show");
   headerFooterVer.classList.add("delay");

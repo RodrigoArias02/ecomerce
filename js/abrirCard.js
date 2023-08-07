@@ -4,7 +4,6 @@ import { cargarElementos } from "./generatorCards.js";
 const URLL = window.location.pathname.split("/").pop().split(".").shift();
 
 let items;
-console.log("iniciamos");
 async function createCompraHTML(objetoEncontrado) {
   if (!objetoEncontrado) {
     console.log("No se encontró ningún objeto con el id:", idobject);
@@ -73,8 +72,6 @@ async function createCompraHTML(objetoEncontrado) {
   }
 
   conteinerCards.innerHTML = HTMLCompra;
-
-  console.log(objetoEncontrado);
 }
 
 async function botonMirar() {
@@ -82,11 +79,8 @@ async function botonMirar() {
   `;
 
   if (URLL === "productos") {
-    console.log("generarCards");
     items = await cargarElementos();
-    console.log(items);
   } else {
-    console.log("generarElementos");
     items = await cargarElementos();
   }
 
@@ -102,7 +96,7 @@ async function botonMirar() {
       p.innerHTML = "";
       modal.classList.add("color-modal");
       footerVer.classList.add("Dflex");
-      console.log("URL:" + URLL);
+
       if (URLL === "" || URLL === "index") {
         footer.classList.add("Dnone");
         footer.classList.remove("Dflex");
@@ -112,10 +106,9 @@ async function botonMirar() {
 
       let formulario = btn.closest(".formulario");
       let idobject = formulario.querySelector("input").value;
-      console.log("Producto ID:", idobject);
 
       let objetoEncontrado = items.find((objeto) => objeto.id == idobject);
-      console.log(objetoEncontrado);
+
       createCompraHTML(objetoEncontrado);
       let descripcion = document.getElementById("descripcion");
       let especificaciones = document.getElementById("especificaciones");
@@ -135,10 +128,7 @@ async function botonMirar() {
     });
   });
 }
-if (URLL == "productos") {
-  await botonMirar();
-} else {
-  console.log("generarElementos");
-  items = await cargarElementos();
-}
+// if (URLL == "productos") {
+//   await botonMirar();
+// }
 export { botonMirar };

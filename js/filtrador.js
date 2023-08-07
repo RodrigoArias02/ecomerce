@@ -1,4 +1,4 @@
-// import { pedirElementos } from "./generatorCards.js";
+// import {  } from "./generatorCards.js";
 // Función para buscar elementos por categoría
 // function obtenerUrlBase() {
 //   // Verificar si estamos en un entorno local o en línea
@@ -45,7 +45,6 @@ async function buscarPorCategoria(categoria) {
     );
     const cadenaJSON = JSON.stringify(elementosEncontrados);
     const URL = window.location.pathname.split("/").pop().split(".").shift();
-    console.log(URL);
     if (elementosEncontrados != "") {
       localStorage.setItem("elementos", cadenaJSON);
       if (URL != "productos") {

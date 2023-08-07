@@ -808,6 +808,9 @@ body .header-product .heaeder-section-one {
   color: white;
   font-size: 1.3em;
 }
+body .header-product .heaeder-section-one span {
+  font-size: 0.6em;
+}
 body .header-product .heaeder-section-two {
   display: flex;
   width: 80%;
@@ -1023,7 +1026,7 @@ body main .conteiner-cards-filter .section-card .card-containerButtons form butt
   flex: 1;
 }
 .footer .footer-div_icons span {
-  display: none;
+  display: block;
   width: min-content;
   min-width: 18px;
   padding: 0px 3px;
