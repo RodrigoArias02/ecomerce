@@ -1,4 +1,5 @@
 "use strict";
+import { cantidadDeCompra } from "./carrito.js";
 let containerBestSellers = document.querySelectorAll(
   ".section-div_conteinerCards"
 );
@@ -53,8 +54,15 @@ async function cargarElementos() {
   const item = await categoriaspPedir();
   await generarCategorias(item);
   const elementos = await pedirElementos();
+  const datosAlmacenadoscarrito = localStorage.getItem("carrito");
+
+  if (datosAlmacenadoscarrito != "") {
+    const miObjetoRecuperado = JSON.parse(datosAlmacenadoscarrito);
+    cantidadDeCompra(miObjetoRecuperado);
+  }
   if (URLL == "productos") {
     const datosAlmacenados = localStorage.getItem("elementos");
+
     const contenedorCardsFilter = document.querySelector(
       ".conteiner-cards-filter"
     );

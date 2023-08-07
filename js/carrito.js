@@ -9,18 +9,18 @@ let cerrar = document.getElementById("close");
 let footerCart = document.getElementById("event");
 let sectionP = document.getElementById("p-totales");
 let spanCantidad = document.getElementById("span-cant");
-let cartClean;
+let cartClean = [];
 let acumCantidad = 0;
 const URLL = window.location.pathname.split("/").pop().split(".").shift();
-function cantidadDeCompra(accion, valor) {
-  if (accion == "sumar") {
-    acumCantidad = acumCantidad + valor;
-  } else if (accion == "eliminar") {
-    acumCantidad = acumCantidad - valor;
-  }
-
-  spanCantidad.innerText = acumCantidad;
-  return acumCantidad;
+function cantidadDeCompra(cantidadElementos) {
+  let acum = 0;
+  cantidadElementos.forEach((element) => {
+    acum = acum + element.cantidad;
+  });
+  spanCantidad.innerText = acum;
+  console.log("acumulador:");
+  console.log(acum);
+  return cantidadElementos;
 }
 
 function total(cartClean) {
@@ -115,7 +115,7 @@ function verRepetidos(objeto) {
 
     if (index === -1) {
       // Si el objeto no está en el carrito limpio, lo agregamos con cantidad 1
-      cartCleanFunction.push({ ...element, cantidad: 1 });
+      cartCleanFunction.push({ ...element });
     } else {
       // Si el objeto ya está en el carrito limpio, incrementamos su cantidad
       cartCleanFunction[index].cantidad += 1;
@@ -127,14 +127,16 @@ function verRepetidos(objeto) {
 async function mandarAlCarrito(items) {
   const search = (id) => items.find((objeto) => objeto.id === parseInt(id));
   let myForms = document.querySelectorAll(".formulario");
+  let c = 0;
   myForms.forEach((form) => {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
 
+      console.log(c);
       let formulario = e.target;
       let idobjet = 0;
       idobjet = formulario.children[2].value;
-      cantidadDeCompra("sumar", 1);
+
       if (idobjet != undefined) {
         compra = search(idobjet);
 
@@ -144,21 +146,40 @@ async function mandarAlCarrito(items) {
           duration: 3000,
           className: "my-toasty",
         }).showToast();
+
+        if (c == 0) {
+          console.log("hay algo en el localStorage?");
+          let verificar = localStorage.getItem("carrito");
+
+          console.log(verificar);
+          if (verificar != "") {
+            const miObjetoRecuperado = JSON.parse(verificar);
+            console.log("encontramos objetos asi que lo metemos");
+            miObjetoRecuperado.forEach((element) => {
+              cart.push(element);
+            });
+            cartClean = verRepetidos(cart);
+          }
+        }
         cart.push(compra);
         cartClean = verRepetidos(cart);
         localStorage.setItem("carrito", JSON.stringify(cartClean));
-        console.log("mandamos al localStorege");
+        cantidadDeCompra(cartClean);
+        c++;
       }
     });
   });
-  return cart;
+
+  return cartClean;
 }
 
 async function cargarCodigoCarrito(items) {
-  cart = await mandarAlCarrito(items);
+  cartClean = await mandarAlCarrito(items);
+
   carri.addEventListener("click", () => {
     const p = document.getElementById("p-seccion");
-    cartClean = verRepetidos(cart);
+    const miObjetoJSONRecuperado = localStorage.getItem("carrito");
+    cartClean = JSON.parse(miObjetoJSONRecuperado);
 
     p.innerHTML = "Carrito";
     modal.classList.add("show");
@@ -174,11 +195,13 @@ async function cargarCodigoCarrito(items) {
   });
   //cuando eliminas un elemento
   conteinerCards.addEventListener("click", function (event) {
-    cartClean = verRepetidos(cart);
+    const miObjetoJSONRecuperado = localStorage.getItem("carrito");
+    cartClean = JSON.parse(miObjetoJSONRecuperado);
     if (event.target.classList.contains("myButton")) {
       event.preventDefault();
+      let longitudArray = cartClean.length;
+      console.log(longitudArray);
 
-      cantidadDeCompra("eliminar", 1);
       let input = event.target
         .closest(".conteiner-text-cart")
         .querySelector("input");
@@ -204,10 +227,11 @@ async function cargarCodigoCarrito(items) {
 
         cart.splice(objetoEliminarCart, 1);
       }
+      cantidadDeCompra(cartClean);
       modalCart = renderCart(cartClean);
       conteinerCards.innerHTML = modalCart;
     }
   });
   return cartClean;
 }
-export { cargarCodigoCarrito };
+export { cargarCodigoCarrito, cantidadDeCompra };
