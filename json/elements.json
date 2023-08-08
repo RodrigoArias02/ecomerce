@@ -91,8 +91,8 @@
     "cantidad": 1,
     "categoria": "gabinete",
     "oferta": {
-      "estado": false,
-      "porcentaje": 0
+      "estado": true,
+      "porcentaje": 15
     }
   },
   {

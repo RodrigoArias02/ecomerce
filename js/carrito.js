@@ -17,9 +17,12 @@ function cantidadDeCompra(cantidadElementos) {
   cantidadElementos.forEach((element) => {
     acum = acum + element.cantidad;
   });
+
   spanCantidad.innerText = acum;
-  console.log("acumulador:");
-  console.log(acum);
+  if (spanCantidad.textContent <= 0) {
+    spanCantidad.innerText = "";
+  }
+
   return cantidadElementos;
 }
 
@@ -28,7 +31,24 @@ function total(cartClean) {
   let sumEnvioPorCantidad = 0;
   let sumPrecioCantidad = 0;
   const sumaPrecios = cartClean.reduce((acumulador, objeto) => {
-    return acumulador + objeto.precio * objeto.cantidad;
+    if (objeto.oferta.estado == true) {
+      console.log("oferta");
+      console.log(objeto.oferta.porcentaje);
+      console.log(objeto.cantidad);
+      console.log(objeto.precio);
+      acumulador =
+        acumulador +
+        (objeto.precio - (objeto.precio * objeto.oferta.porcentaje) / 100) *
+          objeto.cantidad;
+      console.log("resultado:" + acumulador);
+    } else {
+      console.log("no oferta");
+      console.log(objeto.cantidad);
+      console.log(objeto.precio);
+      acumulador = acumulador + objeto.precio * objeto.cantidad;
+      console.log("resultado:" + acumulador);
+    }
+    return acumulador;
   }, 0);
   cartClean.forEach((element) => {
     sumPrecioCantidad = element.cantidad * element.precio;
@@ -67,8 +87,13 @@ function renderCart(cartClean) {
       `;
   sectionP.innerHTML = HTMLFooterCart;
 
-  cartClean.forEach(({ id, nombre, URLImg, cantidad, precio }) => {
-    suma = precio * cantidad;
+  cartClean.forEach(({ id, nombre, URLImg, cantidad, precio, oferta }) => {
+    if (oferta.estado == true) {
+      suma = (precio - (precio * oferta.porcentaje) / 100) * cantidad;
+    } else {
+      suma = precio * cantidad;
+    }
+
     suma > 8000 ? (envio = "Gratis") : (envio = 1500);
     let estilo = isNaN(envio) ? "color: green" : "color: black";
     HTMLCart += `

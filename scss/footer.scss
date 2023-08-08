@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Signika+Negative:wght@700&display=swap");
+
 .footer {
   display: flex;
   width: 100%;
@@ -23,12 +25,15 @@
       padding: 0px 3px;
       height: min-content;
       position: absolute;
-      background: red;
+      // background: rgb(255, 44, 44);
       border-radius: 50%;
-      font-size: 0.5em;
+      font-size: 0.6em;
+      font-family: "Signika Negative", sans-serif;
       text-align: center;
-      margin-left: 23px;
-      margin-bottom: 16px;
+      margin-left: 7px;
+      margin-bottom: 30px;
+      color: rgb(255, 255, 255);
+      font-weight: 900;
     }
   }
 }

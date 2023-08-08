@@ -67,31 +67,55 @@ async function cargarElementos() {
       ".conteiner-cards-filter"
     );
     let HTMLCards = "";
+
     if (datosAlmacenados) {
       try {
         const datosArray = JSON.parse(datosAlmacenados);
-        datosArray.forEach(({ id, nombre, precio, URLImg }) => {
+        let descuento = 0;
+        datosArray.forEach(({ id, nombre, precio, URLImg, oferta }) => {
+          let mostrar =
+            precio >= 8000
+              ? `            
+              <span class="send">
+                <p>Envio Gratis</p>
+                <i class="bx bxs-plane-take-off"></i>
+                <p>FULL</p>
+            </span>`
+              : "";
+          let escribirOferta =
+            oferta.porcentaje > 0 ? oferta.porcentaje + "% OFF" : "";
           HTMLCards += `
-              <section class="section-card">
-                  <div class="section-div_like">
-                      <i class="bx bxs-heart"></i>
-                  </div>
-                  <div class="card-containerImg">
-                      <img src="../img/${URLImg}" alt="" />
-                  </div>
-                  <article class="card-containerText">
-                      <p>${nombre}</p>
-                      <p>$${precio}</p>
-                      <p>$${precio}</p>
-                  </article>
-                  <section class="card-containerButtons">
-                    <form class="formulario">
-                      <button type="button" class="btnComprar">Comprar</button>
-                      <button type="submit"><i class="bx bx-plus"></i></button>
-                      <input type="text" value="${id}" name="" id="" hidden>
-                    </form>
-                  </section>
-              </section>
+            <section class="section-card">
+            <div class="section-div_like">
+                <i class="bx bxs-heart"></i>
+            </div>
+            <div class="card-containerImg">
+              <img src="../img/${URLImg}" alt="" />
+            </div>
+            <article class="card-containerText">
+                <p class="nombreProducto">${nombre}</p>
+                <span class="precioDescuento">
+                <p>
+                  $${(descuento =
+                    oferta.estado === true
+                      ? precio - (precio * oferta.porcentaje) / 100
+                      : precio)}
+                </p>
+                <p>${escribirOferta}</p>
+                </span>
+                <p class="precioAnterior">${(precio =
+                  oferta.estado === true ? "$" + precio : "")}</p>
+                </span>
+                ${mostrar}
+            </article>
+            <section class="card-containerButtons">
+              <form class="formulario">
+                <button type="button" class="btnComprar">Comprar</button>
+                <button type="submit"><i class="bx bx-plus"></i></button>
+                <input type="text" value="${id}" name="" id="" hidden>
+              </form>
+            </section>
+        </section>
               `;
         });
         contenedorCardsFilter.innerHTML = HTMLCards;
@@ -104,7 +128,20 @@ async function cargarElementos() {
     }
   } else {
     if (elementos) {
-      elementos.forEach(({ id, nombre, precio, URLImg }) => {
+      let descuento = 0;
+
+      elementos.forEach(({ id, nombre, precio, URLImg, oferta }) => {
+        let mostrar =
+          precio >= 8000
+            ? `            
+            <span class="send">
+              <p>Envio Gratis</p>
+              <i class="bx bxs-plane-take-off"></i>
+              <p>FULL</p>
+          </span>`
+            : "";
+        let escribirOferta =
+          oferta.porcentaje > 0 ? oferta.porcentaje + "% OFF" : "";
         HTMLCards += `
       <section class="section-card">
           <div class="section-div_like">
@@ -114,9 +151,20 @@ async function cargarElementos() {
               <img src="img/${URLImg}" alt="" />
           </div>
           <article class="card-containerText">
-              <p>${nombre}</p>
-              <p>$${precio}</p>
-              <p>$${precio}</p>
+              <p class="nombreProducto">${nombre}</p>
+              <span class="precioDescuento">
+              <p>
+                $${(descuento =
+                  oferta.estado === true
+                    ? precio - (precio * oferta.porcentaje) / 100
+                    : precio)}
+              </p>
+              <p>${escribirOferta}</p>
+              </span>
+              <p class="precioAnterior">${(precio =
+                oferta.estado === true ? "$" + precio : "")}</p>
+              </span>
+              ${mostrar}
           </article>
           <section class="card-containerButtons">
             <form class="formulario">

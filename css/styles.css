@@ -1,5 +1,6 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Signika+Negative:wght@700&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -283,6 +284,7 @@
   height: 100%;
   min-width: 200px;
   max-width: 350px;
+  min-height: 356px;
   max-height: 356px;
   background: white;
   border-radius: 15px;
@@ -318,21 +320,31 @@
   height: 100%;
   padding-bottom: 15px;
 }
-.main .main-section_2 .section-div_conteinerCards .section-card .card-containerText p {
-  padding: 3px 0px;
+.main .main-section_2 .section-div_conteinerCards .section-card .card-containerText .precioDescuento {
+  display: flex;
 }
-.main .main-section_2 .section-div_conteinerCards .section-card .card-containerText p:nth-child(1) {
+.main .main-section_2 .section-div_conteinerCards .section-card .card-containerText .precioDescuento p:nth-child(1) {
+  font-size: 1.1em;
+  margin-right: 5px;
+}
+.main .main-section_2 .section-div_conteinerCards .section-card .card-containerText .precioDescuento p:nth-child(2) {
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  font-size: 0.9em;
+  color: #569a4f;
+}
+.main .main-section_2 .section-div_conteinerCards .section-card .card-containerText .nombreProducto {
+  padding: 3px 0px;
   font-size: 0.9em;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  height: 48px;
+  max-height: 48px;
+  height: min-content;
 }
-.main .main-section_2 .section-div_conteinerCards .section-card .card-containerText p:nth-child(2) {
-  font-size: 1.1em;
-}
-.main .main-section_2 .section-div_conteinerCards .section-card .card-containerText p:nth-child(3) {
+.main .main-section_2 .section-div_conteinerCards .section-card .card-containerText .precioAnterior {
   font-size: 1em;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   letter-spacing: 1px;
@@ -340,7 +352,35 @@
   text-decoration: line-through;
   color: #b6b0b8;
 }
+.main .main-section_2 .section-div_conteinerCards .section-card .card-containerText .send {
+  display: flex;
+  color: #5db352;
+}
+.main .main-section_2 .section-div_conteinerCards .section-card .card-containerText .send i {
+  font-size: 1.4em;
+}
+.main .main-section_2 .section-div_conteinerCards .section-card .card-containerText .send p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 2px;
+  font-size: 0.9em;
+}
+.main .main-section_2 .section-div_conteinerCards .section-card .card-containerText .send p:nth-child(1) {
+  font-size: 0.8em;
+}
+.main .main-section_2 .section-div_conteinerCards .section-card .card-containerText .send p:nth-child(3) {
+  font-size: 0.8em;
+  color: #5db352;
+  font-family: "Poppins", "sans-serif";
+  font-weight: bolder;
+  font-style: italic;
+}
 .main .main-section_2 .section-div_conteinerCards .section-card .card-containerButtons {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: end;
   width: 100%;
 }
 .main .main-section_2 .section-div_conteinerCards .section-card .card-containerButtons form {
@@ -910,7 +950,7 @@ body main .conteiner-cards-filter .section-card {
   align-items: center;
   width: 100%;
   max-width: 170px;
-  height: 100%;
+  height: 306px;
   background: white;
   border-radius: 15px;
   padding: 10px;
@@ -947,31 +987,69 @@ body main .conteiner-cards-filter .section-card .card-containerImg img {
   object-fit: contain; /* Ajusta la imagen al contenedor manteniendo su relación de aspecto */
 }
 body main .conteiner-cards-filter .section-card .card-containerText {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   width: 100%;
   height: 100%;
   padding-bottom: 15px;
 }
-body main .conteiner-cards-filter .section-card .card-containerText p {
-  padding: 3px 0px;
+body main .conteiner-cards-filter .section-card .card-containerText .precioDescuento {
+  display: flex;
 }
-body main .conteiner-cards-filter .section-card .card-containerText p:nth-child(1) {
+body main .conteiner-cards-filter .section-card .card-containerText .precioDescuento p:nth-child(1) {
+  font-size: 1.1em;
+  margin-right: 5px;
+}
+body main .conteiner-cards-filter .section-card .card-containerText .precioDescuento p:nth-child(2) {
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  font-size: 0.9em;
+  color: #569a4f;
+}
+body main .conteiner-cards-filter .section-card .card-containerText .nombreProducto {
+  padding: 3px 0px;
   font-size: 0.9em;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  height: 48px;
+  width: 100%;
+  height: min-content;
+  max-height: 48px;
 }
-body main .conteiner-cards-filter .section-card .card-containerText p:nth-child(2) {
-  font-size: 1.1em;
-}
-body main .conteiner-cards-filter .section-card .card-containerText p:nth-child(3) {
+body main .conteiner-cards-filter .section-card .card-containerText .precioAnterior {
   font-size: 1em;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   letter-spacing: 1px;
   font-weight: lighter;
   text-decoration: line-through;
   color: #b6b0b8;
+}
+body main .conteiner-cards-filter .section-card .card-containerText .send {
+  display: flex;
+  color: #5db352;
+}
+body main .conteiner-cards-filter .section-card .card-containerText .send i {
+  font-size: 1.4em;
+}
+body main .conteiner-cards-filter .section-card .card-containerText .send p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 2px;
+  font-size: 0.9em;
+}
+body main .conteiner-cards-filter .section-card .card-containerText .send p:nth-child(1) {
+  font-size: 0.8em;
+}
+body main .conteiner-cards-filter .section-card .card-containerText .send p:nth-child(3) {
+  font-size: 0.8em;
+  color: #5db352;
+  font-family: "Poppins", "sans-serif";
+  font-weight: bolder;
+  font-style: italic;
 }
 body main .conteiner-cards-filter .section-card .card-containerButtons {
   width: 100%;
@@ -1032,12 +1110,14 @@ body main .conteiner-cards-filter .section-card .card-containerButtons form butt
   padding: 0px 3px;
   height: min-content;
   position: absolute;
-  background: red;
   border-radius: 50%;
-  font-size: 0.5em;
+  font-size: 0.6em;
+  font-family: "Signika Negative", sans-serif;
   text-align: center;
-  margin-left: 23px;
-  margin-bottom: 16px;
+  margin-left: 7px;
+  margin-bottom: 30px;
+  color: rgb(255, 255, 255);
+  font-weight: 900;
 }
 
 .footerCart {
