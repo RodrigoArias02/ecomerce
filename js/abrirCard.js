@@ -4,14 +4,45 @@ import { cargarElementos } from "./generatorCards.js";
 const URLL = window.location.pathname.split("/").pop().split(".").shift();
 
 let items;
+async function elegirCantidad() {
+  let sum = document.getElementById("sum");
+  let num = document.getElementById("num");
+  let res = document.getElementById("res");
+  let i = 0;
+
+  sum.addEventListener("click", () => {
+    if (i >= 0) {
+      i++;
+
+      num.innerText = i;
+    }
+  });
+  res.addEventListener("click", () => {
+    if (i >= 0) {
+      i--;
+      num.innerText = i;
+    }
+  });
+}
 async function createCompraHTML(objetoEncontrado) {
   if (!objetoEncontrado) {
     console.log("No se encontró ningún objeto con el id:", idobject);
     return;
   }
-
-  const { URLImg, nombre, precio } = objetoEncontrado;
-
+  let valorDescuento = 0;
+  let precioAntes;
+  let valorOff;
+  const { URLImg, nombre, precio, oferta, categoria } = objetoEncontrado;
+  if (oferta.estado == true) {
+    valorDescuento = precio - (precio * oferta.porcentaje) / 100;
+    precioAntes = "$" + precio;
+    valorOff = oferta.porcentaje + "% OFF";
+    console.log(valorDescuento);
+  } else {
+    valorDescuento = precio;
+    precioAntes = "";
+    valorOff = "";
+  }
   const HTMLCompra = `
           <section class="object-img">
             <article class="body-img">
@@ -22,12 +53,13 @@ async function createCompraHTML(objetoEncontrado) {
           </section>
           <section class="body-object">
             <article class="body-article">
-              <p>Categoria</p>
+              
               <p class="title">${nombre}</p>
               <span>
-                <p>$${precio}</p>
-                <p>$${precio}</p>
+                <p>$${valorDescuento}</p>
+                <p>${precioAntes}</p>
               </span>
+              <p class="off">${valorOff}</p>
             </article>
             <article class="body-article_buttons">
               <p class="p" id="descripcion">Descripcion</p>
@@ -90,6 +122,7 @@ async function botonMirar() {
   const headerFooterVer = document.getElementById("modal_header");
   const p = document.getElementById("p-seccion");
   let modal = document.getElementById("modal");
+
   btnComprar.forEach((btn) => {
     btn.addEventListener("click", (e) => {
       e.preventDefault();
@@ -108,8 +141,10 @@ async function botonMirar() {
       let idobject = formulario.querySelector("input").value;
 
       let objetoEncontrado = items.find((objeto) => objeto.id == idobject);
-
+      const lupa = document.getElementById("lupa");
       createCompraHTML(objetoEncontrado);
+      lupa.remove();
+      elegirCantidad();
       let descripcion = document.getElementById("descripcion");
       let especificaciones = document.getElementById("especificaciones");
       let contenedor = document.getElementById("contenedor-descripcion");
@@ -131,4 +166,4 @@ async function botonMirar() {
 // if (URLL == "productos") {
 //   await botonMirar();
 // }
-export { botonMirar };
+export { botonMirar, elegirCantidad };

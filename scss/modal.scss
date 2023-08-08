@@ -321,6 +321,12 @@
             }
           }
         }
+
+        .off {
+          color: $verde-oscuro;
+          font-size: 1em;
+          font-weight: 600;
+        }
       }
       .body-article_buttons {
         display: flex;
