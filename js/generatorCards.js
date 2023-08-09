@@ -58,7 +58,7 @@ async function cargarElementos() {
   const elementos = await pedirElementos();
   const datosAlmacenadoscarrito = localStorage.getItem("carrito");
 
-  if (datosAlmacenadoscarrito != "") {
+  if (datosAlmacenadoscarrito != "" && datosAlmacenadoscarrito != null) {
     const miObjetoRecuperado = JSON.parse(datosAlmacenadoscarrito);
     cantidadDeCompra(miObjetoRecuperado);
   }
