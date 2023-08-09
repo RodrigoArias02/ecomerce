@@ -5,7 +5,7 @@
     "precio": 30000,
     "URLImg": "16gbspectrum.png",
     "cantidad": 1,
-    "categoria": "memoria ram",
+    "categoria": "memorias ram",
     "oferta": {
       "estado": true,
       "porcentaje": 4
@@ -17,7 +17,7 @@
     "precio": 700,
     "URLImg": "asusprime.webp",
     "cantidad": 1,
-    "categoria": "placa madre",
+    "categoria": "placas madre",
     "oferta": {
       "estado": false,
       "porcentaje": 0
@@ -29,7 +29,7 @@
     "precio": 1000,
     "URLImg": "b360.webp",
     "cantidad": 1,
-    "categoria": "placa madre",
+    "categoria": "placas madre",
     "oferta": {
       "estado": false,
       "porcentaje": 0
@@ -41,7 +41,7 @@
     "precio": 5000,
     "URLImg": "corsai.webp",
     "cantidad": 1,
-    "categoria": "fuente",
+    "categoria": "fuentes",
     "oferta": {
       "estado": false,
       "porcentaje": 0
@@ -53,7 +53,7 @@
     "precio": 5000,
     "URLImg": "discoduro8gb.webp",
     "cantidad": 1,
-    "categoria": "disco",
+    "categoria": "almacenamiento",
     "oferta": {
       "estado": false,
       "porcentaje": 0
@@ -65,7 +65,7 @@
     "precio": 5000,
     "URLImg": "discoexterno.png",
     "cantidad": 1,
-    "categoria": "disco",
+    "categoria": "almacenamiento",
     "oferta": {
       "estado": false,
       "porcentaje": 0
@@ -77,7 +77,7 @@
     "precio": 15000,
     "URLImg": "evga.png",
     "cantidad": 1,
-    "categoria": "fuente",
+    "categoria": "fuentes",
     "oferta": {
       "estado": false,
       "porcentaje": 0
@@ -89,7 +89,7 @@
     "precio": 15000,
     "URLImg": "gabinete.webp",
     "cantidad": 1,
-    "categoria": "gabinete",
+    "categoria": "gabinetes",
     "oferta": {
       "estado": true,
       "porcentaje": 15
@@ -101,7 +101,7 @@
     "precio": 15000,
     "URLImg": "evgamouse.webp",
     "cantidad": 1,
-    "categoria": "mouse",
+    "categoria": "perifericos",
     "oferta": {
       "estado": false,
       "porcentaje": 0
@@ -113,7 +113,7 @@
     "precio": 15000,
     "URLImg": "gabineteaerocool.webp",
     "cantidad": 1,
-    "categoria": "gabinete",
+    "categoria": "gabinetes",
     "oferta": {
       "estado": false,
       "porcentaje": 0
@@ -125,7 +125,7 @@
     "precio": 15000,
     "URLImg": "gabineteblanco.png",
     "cantidad": 1,
-    "categoria": "gabinete",
+    "categoria": "gabinetes",
     "oferta": {
       "estado": false,
       "porcentaje": 0
@@ -137,7 +137,7 @@
     "precio": 15000,
     "URLImg": "h610m.webp",
     "cantidad": 1,
-    "categoria": "placa madre",
+    "categoria": "placas madre",
     "oferta": {
       "estado": false,
       "porcentaje": 0

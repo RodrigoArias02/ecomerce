@@ -139,7 +139,7 @@ function verRepetidos(objeto) {
     );
 
     if (index === -1) {
-      // Si el objeto no está en el carrito limpio, lo agregamos con cantidad 1
+      // Si el objeto no está en el carrito limpio, lo agregamos
       cartCleanFunction.push({ ...element });
     } else {
       // Si el objeto ya está en el carrito limpio, incrementamos su cantidad

@@ -1,4 +1,4 @@
-// "use strict";
+"use strict";
 import { modalFavorite } from "./modales.js";
 let footer = document.querySelector(".footer");
 let home = document.getElementById("home");
@@ -23,7 +23,6 @@ if (URLL === "" || URLL === "index") {
   fav.addEventListener("click", () => {
     modal.classList.add("show");
     body.classList.add("over");
-
     conteinerCards.innerHTML = modalFavorite;
     footer.classList.remove("Dflex");
     footer.classList.add("Dnone");

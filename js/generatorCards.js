@@ -27,10 +27,12 @@ async function generarCategorias(item) {
     item.forEach(({ nombre, img }) => {
       HTMLCards += `
       <div class="section-div_categories">
-        <section class="div-section_photo">
-          <img src="${URLL === "productos" ? "../" : ""}img/${img}" alt="" />
-        </section>
-        <p>${nombre}</p>
+        <div class="clickable-content">
+          <section class="div-section_photo">
+            <img src="${URLL === "productos" ? "../" : ""}img/${img}" alt="" />
+          </section>
+          <p>${nombre}</p>
+        </div>
       </div>
       `;
     });

@@ -22,7 +22,6 @@ function realizarPeticion() {
     alert("La busqueda solo acepta texto.");
     return;
   } else {
-    categoria = categoria.toLowerCase();
     return categoria;
   }
   // deberia crear servidor donde debes manejar la solicitud para obtener los elementos filtrados por categoría.
@@ -39,7 +38,7 @@ async function buscarPorCategoria(categoria) {
   try {
     const response = await fetch(jsonURL);
     const data = await response.json();
-
+    categoria = categoria.toLowerCase();
     const elementosEncontrados = data.filter(
       (elemento) => elemento.categoria == categoria
     );
@@ -62,10 +61,22 @@ async function buscarPorCategoria(categoria) {
   }
 }
 
-// Ejemplo de búsqueda de elementos por categoría "frutas"
 const btnSearch = document.getElementById("btnSearch");
 btnSearch.addEventListener("click", () => {
   const categoriaBuscada = realizarPeticion();
 
   buscarPorCategoria(categoriaBuscada);
+});
+
+const conteinerCategories = document.getElementById("conteinerCategories");
+conteinerCategories.addEventListener("click", (event) => {
+  // Verificamos si el elemento clicado es el contenedor con clase "clickable-content"
+  const clickableContent = event.target.closest(".clickable-content");
+  if (clickableContent) {
+    // Obtenemos el elemento <p> dentro del contenedor
+    const nombreElemento = clickableContent.querySelector("p");
+    const nombre = nombreElemento.textContent;
+    console.log(nombre);
+    buscarPorCategoria(nombre);
+  }
 });

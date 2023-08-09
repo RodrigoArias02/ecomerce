@@ -225,7 +225,12 @@
   font-size: 0.9em;
   margin: 0px 10px;
 }
-.main .main-section .section-div_categories .div-section_photo {
+.main .main-section .section-div_categories .clickable-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.main .main-section .section-div_categories .clickable-content .div-section_photo {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -234,7 +239,7 @@
   background-color: #d7f2e9;
   border-radius: 8px;
 }
-.main .main-section .section-div_categories .div-section_photo img {
+.main .main-section .section-div_categories .clickable-content .div-section_photo img {
   max-width: 100%; /* Ajusta el ancho máximo de la imagen al 100% del contenedor */
   max-height: 100%; /* Ajusta la altura máxima de la imagen al 100% del contenedor */
   object-fit: contain; /* Ajusta la imagen al contenedor manteniendo su relación de aspecto */
@@ -924,7 +929,12 @@ body .header-product .heaeder-section-three .section-div_categories {
   font-size: 0.9em;
   margin: 0px 10px;
 }
-body .header-product .heaeder-section-three .section-div_categories .div-section_photo {
+body .header-product .heaeder-section-three .section-div_categories .clickable-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+body .header-product .heaeder-section-three .section-div_categories .clickable-content .div-section_photo {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -933,7 +943,7 @@ body .header-product .heaeder-section-three .section-div_categories .div-section
   background-color: white;
   border-radius: 8px;
 }
-body .header-product .heaeder-section-three .section-div_categories .div-section_photo img {
+body .header-product .heaeder-section-three .section-div_categories .clickable-content .div-section_photo img {
   max-width: 100%; /* Ajusta el ancho máximo de la imagen al 100% del contenedor */
   max-height: 100%; /* Ajusta la altura máxima de la imagen al 100% del contenedor */
   object-fit: contain; /* Ajusta la imagen al contenedor manteniendo su relación de aspecto */

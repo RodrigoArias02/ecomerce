@@ -18,7 +18,7 @@ async function elegirCantidad() {
     }
   });
   res.addEventListener("click", () => {
-    if (i >= 0) {
+    if (i > 0) {
       i--;
       num.innerText = i;
     }
@@ -141,9 +141,9 @@ async function botonMirar() {
       let idobject = formulario.querySelector("input").value;
 
       let objetoEncontrado = items.find((objeto) => objeto.id == idobject);
-      const lupa = document.getElementById("lupa");
+
       createCompraHTML(objetoEncontrado);
-      lupa.remove();
+
       elegirCantidad();
       let descripcion = document.getElementById("descripcion");
       let especificaciones = document.getElementById("especificaciones");

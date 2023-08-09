@@ -43,18 +43,23 @@
       text-align: center;
       font-size: 0.9em;
       margin: 0px 10px;
-      .div-section_photo {
+      .clickable-content {
         display: flex;
-        justify-content: center;
+        flex-direction: column;
         align-items: center;
-        width: 70px;
-        height: 65px;
-        background-color: $celeste-pastel;
-        border-radius: 8px;
-        img {
-          max-width: 100%; /* Ajusta el ancho máximo de la imagen al 100% del contenedor */
-          max-height: 100%; /* Ajusta la altura máxima de la imagen al 100% del contenedor */
-          object-fit: contain; /* Ajusta la imagen al contenedor manteniendo su relación de aspecto */
+        .div-section_photo {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 70px;
+          height: 65px;
+          background-color: $celeste-pastel;
+          border-radius: 8px;
+          img {
+            max-width: 100%; /* Ajusta el ancho máximo de la imagen al 100% del contenedor */
+            max-height: 100%; /* Ajusta la altura máxima de la imagen al 100% del contenedor */
+            object-fit: contain; /* Ajusta la imagen al contenedor manteniendo su relación de aspecto */
+          }
         }
       }
     }
