@@ -177,7 +177,7 @@ async function mandarAlCarrito(items) {
           let verificar = localStorage.getItem("carrito");
 
           console.log(verificar);
-          if (verificar != "") {
+          if (verificar != "" && verificar != null) {
             const miObjetoRecuperado = JSON.parse(verificar);
             console.log("encontramos objetos asi que lo metemos");
             miObjetoRecuperado.forEach((element) => {
@@ -221,7 +221,9 @@ async function cargarCodigoCarrito(items) {
   //cuando eliminas un elemento
   conteinerCards.addEventListener("click", function (event) {
     const miObjetoJSONRecuperado = localStorage.getItem("carrito");
-    cartClean = JSON.parse(miObjetoJSONRecuperado);
+    if (miObjetoJSONRecuperado != null) {
+      cartClean = JSON.parse(miObjetoJSONRecuperado);
+    }
     if (event.target.classList.contains("myButton")) {
       event.preventDefault();
       let longitudArray = cartClean.length;
